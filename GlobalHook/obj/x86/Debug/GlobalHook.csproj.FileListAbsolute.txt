@@ -1,0 +1,25 @@
+D:\Project\GlobalHook\GlobalHook\bin\Debug\GlobalHook.exe.config
+D:\Project\GlobalHook\GlobalHook\bin\Debug\GlobalHook.exe
+D:\Project\GlobalHook\GlobalHook\bin\Debug\GlobalHook.pdb
+D:\Project\GlobalHook\GlobalHook\obj\x86\Debug\GlobalHook.CloseFrm.resources
+D:\Project\GlobalHook\GlobalHook\obj\x86\Debug\GlobalHook.HookOutputFrm.resources
+D:\Project\GlobalHook\GlobalHook\obj\x86\Debug\GlobalHook.ProcessFrm.resources
+D:\Project\GlobalHook\GlobalHook\obj\x86\Debug\GlobalHook.Properties.Resources.resources
+D:\Project\GlobalHook\GlobalHook\obj\x86\Debug\GlobalHook.SaveFrm.resources
+D:\Project\GlobalHook\GlobalHook\obj\x86\Debug\GlobalHook.SetFrm.resources
+D:\Project\GlobalHook\GlobalHook\obj\x86\Debug\GlobalHook.csproj.GenerateResource.Cache
+D:\Project\GlobalHook\GlobalHook\obj\x86\Debug\GlobalHook.exe
+D:\Project\GlobalHook\GlobalHook\obj\x86\Debug\GlobalHook.pdb
+D:\visual studio 2010\Projects\GlobalHook\GlobalHook\bin\Debug\GlobalHook.exe.config
+D:\visual studio 2010\Projects\GlobalHook\GlobalHook\obj\x86\Debug\GlobalHook.exe
+D:\visual studio 2010\Projects\GlobalHook\GlobalHook\obj\x86\Debug\GlobalHook.pdb
+D:\visual studio 2010\Projects\GlobalHook\GlobalHook\bin\Debug\GlobalHook.exe
+D:\visual studio 2010\Projects\GlobalHook\GlobalHook\bin\Debug\GlobalHook.pdb
+D:\visual studio 2010\Projects\GlobalHook\GlobalHook\obj\x86\Debug\GlobalHook.CloseFrm.resources
+D:\visual studio 2010\Projects\GlobalHook\GlobalHook\obj\x86\Debug\GlobalHook.HookOutputFrm.resources
+D:\visual studio 2010\Projects\GlobalHook\GlobalHook\obj\x86\Debug\GlobalHook.ProcessFrm.resources
+D:\visual studio 2010\Projects\GlobalHook\GlobalHook\obj\x86\Debug\GlobalHook.Properties.Resources.resources
+D:\visual studio 2010\Projects\GlobalHook\GlobalHook\obj\x86\Debug\GlobalHook.SaveFrm.resources
+D:\visual studio 2010\Projects\GlobalHook\GlobalHook\obj\x86\Debug\GlobalHook.SetFrm.resources
+D:\visual studio 2010\Projects\GlobalHook\GlobalHook\obj\x86\Debug\GlobalHook.csprojResolveAssemblyReference.cache
+D:\visual studio 2010\Projects\GlobalHook\GlobalHook\obj\x86\Debug\GlobalHook.csproj.GenerateResource.Cache
