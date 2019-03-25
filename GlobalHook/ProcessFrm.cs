@@ -1,4 +1,5 @@
-﻿using System;
+﻿//ProcessFrm.cs
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -61,43 +62,44 @@ namespace GlobalHook
         {
             thread1.Abort();
         }
-        //void RandomProgressBar()
-        //{
-        //    Random rd = new Random();
-        //    Thread.Sleep(20000);
-        //    for (int j = 0; j < 10; j++)
-        //    {
 
-        //        for (int i = 0; i < 20; i++)
-        //        {
-        //            Thread.Sleep(10);
-        //            toolStripProgressBar1.Size = new Size(100 + rd.Next(50, 200), 16);
-        //        }
-        //        for (int k = 0; k < 20; k++)
-        //        {
-        //            Thread.Sleep(10);
-        //            toolStripProgressBar1.Size = new Size(200 - rd.Next(1, 100), 16);
-        //        }
-                
-        //        toolStripProgressBar1.Size = new Size(100, 16);
-        //    }
-        //    Thread.Sleep(5000);
-        //    for (int j = 0; j < 10; j++)
-        //    {
+        void RandomProgressBar()
+        {
+            Random rd = new Random();
+            Thread.Sleep(20000);
+            for (int j = 0; j < 10; j++)
+            {
 
-        //        for (int i = 0; i < 20; i++)
-        //        {
-        //            //Thread.Sleep(10);
-        //            toolStripProgressBar1.Size = new Size(rd.Next(100, 500) + i, rd.Next(16, 30));
-        //        }
-        //        for (int k = 0; k < 20; k++)
-        //        {
-        //            //Thread.Sleep(30);
-        //            toolStripProgressBar1.Size = new Size(rd.Next(1, 200) - k, rd.Next(16, 40));
-        //        }
+                for (int i = 0; i < 20; i++)
+                {
+                    Thread.Sleep(10);
+                    toolStripProgressBar1.Size = new Size(100 + rd.Next(50, 200), 16);
+                }
+                for (int k = 0; k < 20; k++)
+                {
+                    Thread.Sleep(10);
+                    toolStripProgressBar1.Size = new Size(200 - rd.Next(1, 100), 16);
+                }
 
-        //    }
-        //    toolStripProgressBar1.Size = new Size(100, 16);
-        //}
+                toolStripProgressBar1.Size = new Size(100, 16);
+            }
+            Thread.Sleep(5000);
+            for (int j = 0; j < 10; j++)
+            {
+
+                for (int i = 0; i < 20; i++)
+                {
+                    //Thread.Sleep(10);
+                    toolStripProgressBar1.Size = new Size(rd.Next(100, 500) + i, rd.Next(16, 30));
+                }
+                for (int k = 0; k < 20; k++)
+                {
+                    //Thread.Sleep(30);
+                    toolStripProgressBar1.Size = new Size(rd.Next(1, 200) - k, rd.Next(16, 40));
+                }
+
+            }
+            toolStripProgressBar1.Size = new Size(100, 16);
+        }
     }
 }

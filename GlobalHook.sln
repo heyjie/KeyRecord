@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GlobalHook", "GlobalHook\GlobalHook.csproj", "{D68450C7-386F-47C5-97A9-2AC978EF54CD}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "GlobalHookSetup", "GlobalHookSetup\GlobalHookSetup.vdproj", "{91A026C9-5D9E-4535-B8DB-27E147C37666}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -13,6 +15,8 @@ Global
 		{D68450C7-386F-47C5-97A9-2AC978EF54CD}.Debug|x86.Build.0 = Debug|x86
 		{D68450C7-386F-47C5-97A9-2AC978EF54CD}.Release|x86.ActiveCfg = Release|x86
 		{D68450C7-386F-47C5-97A9-2AC978EF54CD}.Release|x86.Build.0 = Release|x86
+		{91A026C9-5D9E-4535-B8DB-27E147C37666}.Debug|x86.ActiveCfg = Debug
+		{91A026C9-5D9E-4535-B8DB-27E147C37666}.Release|x86.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

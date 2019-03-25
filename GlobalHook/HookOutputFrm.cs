@@ -1,4 +1,5 @@
-﻿using System;
+﻿//HookOutputFrm.cs
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -6,7 +7,6 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-
 using System.Runtime.InteropServices;
 using System.Diagnostics;
 using System.IO;
@@ -29,9 +29,11 @@ namespace GlobalHook
 
         //public delegate void SetKeyEventHandler(string keydata);//设置快捷键委托
         //public static event SetKeyEventHandler SetKey;
+
         //自动保存委托
         public delegate void SetAutoSaveEventHandler(string path, string interval, bool keySelect, bool mouseSelect, string filename);
         public static event SetAutoSaveEventHandler SetAutoSave;
+
         //关闭自动保存委托
         public delegate void SetManualSaveEventHandler();
         public static event SetManualSaveEventHandler SetManualSave;
@@ -84,6 +86,7 @@ namespace GlobalHook
                 DoSetHideFrm(Settings.Default.radNoState);
         }
         #region 工具栏事件
+        //禁止监测键盘
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
             if (toolStripButton1.Text.Equals("禁止监测键盘"))
@@ -154,6 +157,12 @@ namespace GlobalHook
         {
             SetFrm setFrm = new SetFrm();
             setFrm.ShowDialog(this);//设置窗口
+        }
+
+        private void toolStripButton7_Click(object sender, EventArgs e)
+        {
+            FilterFrm frm = new FilterFrm();
+            frm.ShowDialog(this);
         }
         #endregion
 
@@ -536,7 +545,8 @@ namespace GlobalHook
 
         void m_hook_MouseDown(object sender, MouseEventArgs e)
         {
-            string info = "";
+            string info = string.Empty;
+            string tit = string.Empty;
 
             #region 获取活动窗口进程信息
             //try
@@ -568,13 +578,15 @@ namespace GlobalHook
                 StringBuilder className = new StringBuilder(256);
                 GetClassName(formHandle, className, className.Capacity);//得到窗口的句柄 
                 //info = "当前窗口：" + title.ToString() + " " + "窗口ID：" + formHandle.ToString() + " " + "窗口所属：" + className.ToString();
-                info = title.ToString() + "," + className.ToString();
+                tit = title.ToString();
+                info = className.ToString();
             }
             catch (Exception ex)
             {
+                tit = ex.Message;
                 info = ex.Message;
             }
-            listBox1.Items.Add("鼠标," + e.Button + "," + e.X + "," + e.Y + "," + info + ","+DateTime.Now.ToString());
+            listBox1.Items.Add("鼠标;" + e.Button + ";" + e.X + ";" + e.Y + ";" + tit + ";" + info + ";" + DateTime.Now.ToString());
             this.listBox1.TopIndex = this.listBox1.Items.Count - 1;
         }
 
@@ -619,7 +631,8 @@ namespace GlobalHook
                     }
             }
 
-            string info = "";
+            string info = string.Empty;
+            string tit = string.Empty;
             try
             {
                 IntPtr formHandle = GetForegroundWindow();
@@ -627,15 +640,17 @@ namespace GlobalHook
                 GetWindowText(formHandle, title, title.Capacity);//得到窗口的标题 
                 StringBuilder className = new StringBuilder(256);
                 GetClassName(formHandle, className, className.Capacity);//得到窗口的句柄 
-                info = title.ToString()  + "," + className.ToString();
+                tit = title.ToString();
+                info = className.ToString();
             }
             catch (Exception ex)
             {
+                tit = ex.Message;
                 info = ex.Message;
             }
             //Keys k = (Keys)e.KeyValue;
             //listBox1.Items.Add("键盘按下" + k.ToString());
-            listBox1.Items.Add("键盘," + e.KeyData + "," + info + "," + DateTime.Now.ToString());
+            listBox1.Items.Add("键盘;" + e.KeyData + ";" + "" + ";" + "" + ";" + tit + ";" + info + ";" + DateTime.Now.ToString());
             //this.listBox1.SelectedIndex = this.listBox1.Items.Count - 1;
             this.listBox1.TopIndex = this.listBox1.Items.Count - 1;
         }
@@ -672,6 +687,7 @@ namespace GlobalHook
         );
         #endregion
 
+        
     }
 }
 

@@ -48,6 +48,7 @@
             this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton5 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton6 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton7 = new System.Windows.Forms.ToolStripButton();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.helpProvider1 = new System.Windows.Forms.HelpProvider();
@@ -94,7 +95,7 @@
             this.listBox1.ItemHeight = 12;
             this.listBox1.Location = new System.Drawing.Point(0, 0);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(434, 220);
+            this.listBox1.Size = new System.Drawing.Size(484, 220);
             this.listBox1.TabIndex = 0;
             // 
             // toolStripStatusLabel4
@@ -115,7 +116,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 25);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(434, 220);
+            this.panel1.Size = new System.Drawing.Size(484, 220);
             this.panel1.TabIndex = 9;
             // 
             // statusStrip3
@@ -125,7 +126,7 @@
             this.toolStripStatusLabel4});
             this.statusStrip3.Location = new System.Drawing.Point(0, 245);
             this.statusStrip3.Name = "statusStrip3";
-            this.statusStrip3.Size = new System.Drawing.Size(434, 22);
+            this.statusStrip3.Size = new System.Drawing.Size(484, 22);
             this.statusStrip3.TabIndex = 8;
             this.statusStrip3.Text = "statusStrip3";
             // 
@@ -135,7 +136,7 @@
             this.toolStripStatusLabel5});
             this.statusStrip2.Location = new System.Drawing.Point(0, 267);
             this.statusStrip2.Name = "statusStrip2";
-            this.statusStrip2.Size = new System.Drawing.Size(434, 22);
+            this.statusStrip2.Size = new System.Drawing.Size(484, 22);
             this.statusStrip2.TabIndex = 7;
             this.statusStrip2.Text = "statusStrip2";
             // 
@@ -146,7 +147,7 @@
             this.toolStripStatusLabel2});
             this.statusStrip1.Location = new System.Drawing.Point(0, 289);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(434, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(484, 22);
             this.statusStrip1.TabIndex = 6;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -162,10 +163,11 @@
             this.toolStripButton3,
             this.toolStripButton4,
             this.toolStripButton5,
-            this.toolStripButton6});
+            this.toolStripButton6,
+            this.toolStripButton7});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(434, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(484, 25);
             this.toolStrip1.TabIndex = 5;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -222,6 +224,15 @@
             this.toolStripButton6.Size = new System.Drawing.Size(52, 22);
             this.toolStripButton6.Text = "设置";
             this.toolStripButton6.Click += new System.EventHandler(this.toolStripButton6_Click);
+            // 
+            // toolStripButton7
+            // 
+            this.toolStripButton7.Image = global::GlobalHook.Properties.Resources.Filter;
+            this.toolStripButton7.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton7.Name = "toolStripButton7";
+            this.toolStripButton7.Size = new System.Drawing.Size(52, 22);
+            this.toolStripButton7.Text = "筛选";
+            this.toolStripButton7.Click += new System.EventHandler(this.toolStripButton7_Click);
             // 
             // imageList1
             // 
@@ -294,7 +305,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(434, 311);
+            this.ClientSize = new System.Drawing.Size(484, 311);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.statusStrip3);
             this.Controls.Add(this.statusStrip2);
@@ -303,7 +314,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "HookOutputFrm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "全局键鼠监测器";
+            this.Text = "全局键鼠监测日志";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.HookOutputFrm_FormClosing);
             this.Load += new System.EventHandler(this.HookOutputFrm_Load);
             this.panel1.ResumeLayout(false);
@@ -352,6 +363,7 @@
         private System.Windows.Forms.ToolStripButton toolStripButton3;
         private System.Windows.Forms.ToolStripMenuItem 保存ToolStripMenuItem;
         public System.Windows.Forms.NotifyIcon notifyIcon1;
+        private System.Windows.Forms.ToolStripButton toolStripButton7;
     }
 }
 
