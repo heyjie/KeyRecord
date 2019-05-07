@@ -1,4 +1,4 @@
-# GlobalHook全局鼠标监测日志工具
+# GlobalHook全局键鼠监测日志工具
 
 ## GlobalHook是什么?
 是为了监测全局的鼠标键盘状态，而开发出的钩子程序。
