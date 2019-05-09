@@ -12,3 +12,4 @@ D:\Project\Source\Repos\GlobalHook\GlobalHook\obj\x86\Debug\GlobalHook.SetFrm.re
 D:\Project\Source\Repos\GlobalHook\GlobalHook\obj\x86\Debug\GlobalHook.csproj.GenerateResource.Cache
 D:\Project\Source\Repos\GlobalHook\GlobalHook\obj\x86\Debug\GlobalHook.exe
 D:\Project\Source\Repos\GlobalHook\GlobalHook\obj\x86\Debug\GlobalHook.pdb
+D:\Project\Source\Repos\GlobalHook\GlobalHook\obj\x86\Debug\GlobalHook.csprojResolveAssemblyReference.cache

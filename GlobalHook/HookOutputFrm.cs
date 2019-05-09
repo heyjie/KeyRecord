@@ -84,6 +84,20 @@ namespace GlobalHook
             }
             else
                 DoSetHideFrm(Settings.Default.radNoState);
+            //是否隐藏运行
+            if (Settings.Default.chkHideRun)
+            {
+                this.Hide();
+                notifyIcon1.Visible = false;
+            }
+            else
+            {
+                this.Show();
+                notifyIcon1.Visible = true;
+                this.WindowState = FormWindowState.Normal;
+                this.Activate();
+                this.ShowInTaskbar = true;
+            }
         }
         #region 工具栏事件
         //禁止监测键盘
@@ -156,6 +170,7 @@ namespace GlobalHook
         private void toolStripButton6_Click(object sender, EventArgs e)
         {
             SetFrm setFrm = new SetFrm();
+            setFrm.hookFrm = this;
             setFrm.ShowDialog(this);//设置窗口
         }
 

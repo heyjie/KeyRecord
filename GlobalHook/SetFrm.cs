@@ -8,18 +8,19 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using GlobalHook.Properties;
+using Microsoft.Win32;
 
 namespace GlobalHook
 {
     public partial class SetFrm : Form
     {
-        KeyboardHook k_hook;
-        HookOutputFrm hookFrm;
+        public KeyboardHook k_hook;
+        public HookOutputFrm hookFrm;
         public SetFrm()
         {
             InitializeComponent();
             //Middle.SaveSet+=new Middle.SaveSetEventHandler(Middle_SaveSet);
-            
+
         }
         private void SetFrm_Load(object sender, EventArgs e)
         {
@@ -39,6 +40,8 @@ namespace GlobalHook
             this.tb_SetKey.Text = Settings.Default.tbSetKeyState;
             this.chk_Prompt.Checked = Settings.Default.chkSave;
             this.chk_Hide.Checked = Settings.Default.chkHide;
+            this.chk_BootRun.Checked = Settings.Default.chkBootRun;
+            this.chk_HideRun.Checked = Settings.Default.chkHideRun;
             lbl_Key.Visible = true;
         }
 
@@ -71,14 +74,24 @@ namespace GlobalHook
             k_hook.Start();
             tb_SetKey.Text = "请按下要设置的键";
         }
+
+        void k_hook_KeyDown(object sender, KeyEventArgs e)
+        {
+            tb_SetKey.Text = e.KeyData.ToString();
+            lbl_Key.Text = tb_SetKey.Text;
+        }
+
+        //打开帮助
+        private void label4_Click(object sender, EventArgs e)
+        {
+            HelpProvider HP = new HelpProvider();
+            HP.HelpNamespace = "Help.txt";
+            HP.SetShowHelp(this, true);
+        }
+
+        //按下确认
         private void bt_Ok_Click(object sender, EventArgs e)
         {
-            //if(radioButton2.Checked&&radioButton3.Checked&&radioButton6.Checked)
-            //{
-            //    MessageBox.Show("未做任何更改");
-            //    return;
-            //}
-            hookFrm = new HookOutputFrm();
             if (rad_AutoSave.Checked && !rad_ManualSave.Checked)
             {
                 if (tb_FileName.Text.Equals("") || tb_SavePath.Text.Equals("") || tb_Time.Text.Equals("") || (!chk_Key.Checked && !chk_Mouse.Checked))
@@ -88,14 +101,14 @@ namespace GlobalHook
                 }
                 else
                 {
-                    hookFrm.DoSetAutoSave(tb_SavePath.Text, tb_Time.Text, chk_Key.Checked, chk_Mouse.Checked,tb_FileName.Text);
+                    hookFrm.DoSetAutoSave(tb_SavePath.Text, tb_Time.Text, chk_Key.Checked, chk_Mouse.Checked, tb_FileName.Text);
                     Settings.Default.radAutoSaveState = this.rad_AutoSave.Checked;
                     Settings.Default.radManualSaveState = this.rad_ManualSave.Checked;
-                    Settings.Default.tbSavePathState=this.tb_SavePath.Text;
-                    Settings.Default.tbTimeState=this.tb_Time.Text;
+                    Settings.Default.tbSavePathState = this.tb_SavePath.Text;
+                    Settings.Default.tbTimeState = this.tb_Time.Text;
                     Settings.Default.tbName = this.tb_FileName.Text;
-                    Settings.Default.chkKeyState=this.chk_Key.Checked;
-                    Settings.Default.chkMouseState=this.chk_Mouse.Checked;
+                    Settings.Default.chkKeyState = this.chk_Key.Checked;
+                    Settings.Default.chkMouseState = this.chk_Mouse.Checked;
                 }
             }
 
@@ -115,7 +128,7 @@ namespace GlobalHook
             {
                 //清除输出栏选项
                 //hookFrm.DoSetHideFrm(rad_Yes.Checked);
-                Settings.Default.radYesState=this.rad_Yes.Checked;
+                Settings.Default.radYesState = this.rad_Yes.Checked;
                 Settings.Default.radNoState = this.rad_No.Checked;
             }
             if (rad_No.Checked && !rad_Yes.Checked)
@@ -124,7 +137,7 @@ namespace GlobalHook
                 Settings.Default.radNoState = this.rad_No.Checked;
             }
 
-            if(lbl_Key.Visible == false)
+            if (lbl_Key.Visible == false)
             {
                 if (tb_SetKey.Text.Equals("请按下要设置的键"))
                 {
@@ -138,12 +151,10 @@ namespace GlobalHook
                     //Settings.Default.Save();
                 }
             }
-            if(Settings.Default.lblKeyState == "")//快捷键不为空
+            if (Settings.Default.lblKeyState == "")//快捷键不为空
             {
                 Settings.Default.lblKeyState = "A,Alt";
             }
-
-
             if (chk_Prompt.Checked == true)
             {
                 Settings.Default.chkSave = true;
@@ -156,12 +167,32 @@ namespace GlobalHook
                 Settings.Default.chkHide = true;
             }
             else
+            {
                 Settings.Default.chkHide = false;
-            hookFrm.notifyIcon1.Visible = false;
+            }
+            if (chk_BootRun.Checked == true)
+            {
+                Settings.Default.chkBootRun = true;
+            }
+            else
+            {
+                Settings.Default.chkBootRun = false;
+            }
+            if (chk_HideRun.Checked == true)
+            {
+                Settings.Default.chkHideRun = true;
+            }
+            else
+            {
+                Settings.Default.chkHideRun = false;
+            }
+            
+            Settings.Default.Save();//保存设置
             this.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.Close();
         }
 
+        //按下取消
         private void bt_No_Click(object sender, EventArgs e)
         {
             this.DialogResult = System.Windows.Forms.DialogResult.Cancel;
@@ -187,33 +218,36 @@ namespace GlobalHook
             }
         }
 
-        void k_hook_KeyDown(object sender, KeyEventArgs e)
+        private void chk_BootRun_CheckedChanged(object sender, EventArgs e)
         {
-            tb_SetKey.Text = e.KeyData.ToString();
-        }
-
-        private void tb_SetKey_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar != (char)Keys.Back)
-            {//如果按下的不是回退键，则取消本次(按键)动作
-                e.Handled = true;
+            try
+            {
+                if (chk_BootRun.Checked== true)
+                {
+                    RegistryKey R_local = Registry.LocalMachine;//RegistryKey R_local = Registry.CurrentUser;
+                    RegistryKey R_run = R_local.CreateSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run");
+                    R_run.SetValue(Application.ProductName, Application.ExecutablePath);
+                    R_run.Close();
+                    R_local.Close();
+                }
+                else
+                {
+                    RegistryKey R_local = Registry.LocalMachine;//RegistryKey R_local = Registry.CurrentUser;
+                    RegistryKey R_run = R_local.CreateSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run");
+                    R_run.DeleteValue(Application.ProductName, false);
+                    R_run.Close();
+                    R_local.Close();
+                }
             }
-            
+            catch (Exception)
+            {
+                MessageBox.Show("您需要管理员权限修改", "提示");
+            }
         }
 
         private void SetFrm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Settings.Default.Save();//保存设置
+            k_hook.Stop();
         }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-            HelpProvider HP;
-            HP = new HelpProvider();
-            string Source = "Help.txt";
-            HP.HelpNamespace = Source;
-            HP.SetShowHelp(this, true);
-        }
-
     }
 }
