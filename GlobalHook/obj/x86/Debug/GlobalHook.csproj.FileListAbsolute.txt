@@ -1,0 +1,14 @@
+D:\Project\Source\Repos\GlobalHook\GlobalHook\bin\Debug\GlobalHook.exe.config
+D:\Project\Source\Repos\GlobalHook\GlobalHook\bin\Debug\Help.txt
+D:\Project\Source\Repos\GlobalHook\GlobalHook\bin\Debug\GlobalHook.exe
+D:\Project\Source\Repos\GlobalHook\GlobalHook\bin\Debug\GlobalHook.pdb
+D:\Project\Source\Repos\GlobalHook\GlobalHook\obj\x86\Debug\GlobalHook.CloseFrm.resources
+D:\Project\Source\Repos\GlobalHook\GlobalHook\obj\x86\Debug\GlobalHook.FilterFrm.resources
+D:\Project\Source\Repos\GlobalHook\GlobalHook\obj\x86\Debug\GlobalHook.HookOutputFrm.resources
+D:\Project\Source\Repos\GlobalHook\GlobalHook\obj\x86\Debug\GlobalHook.ProcessFrm.resources
+D:\Project\Source\Repos\GlobalHook\GlobalHook\obj\x86\Debug\GlobalHook.Properties.Resources.resources
+D:\Project\Source\Repos\GlobalHook\GlobalHook\obj\x86\Debug\GlobalHook.SaveFrm.resources
+D:\Project\Source\Repos\GlobalHook\GlobalHook\obj\x86\Debug\GlobalHook.SetFrm.resources
+D:\Project\Source\Repos\GlobalHook\GlobalHook\obj\x86\Debug\GlobalHook.csproj.GenerateResource.Cache
+D:\Project\Source\Repos\GlobalHook\GlobalHook\obj\x86\Debug\GlobalHook.exe
+D:\Project\Source\Repos\GlobalHook\GlobalHook\obj\x86\Debug\GlobalHook.pdb
