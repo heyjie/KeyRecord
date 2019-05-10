@@ -140,7 +140,7 @@ namespace GlobalHook
             DialogResult result = MessageBox.Show("确定清除当前输出面板吗", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result==DialogResult.Yes)
             {
-                listBox1.Items.Clear();
+                dataGridView1.Rows.Clear();
             }
         }
 
@@ -210,7 +210,7 @@ namespace GlobalHook
         StreamWriter sw;//实例化流
         private void timer2_Tick(object sender, EventArgs e)
         {
-            if (this.listBox1.Items.Count == 0)
+            if (this.dataGridView1.RowCount <= 0)
             {
                 return;
             }
@@ -232,25 +232,27 @@ namespace GlobalHook
                     else
                         sw = new StreamWriter(strPath + "\\" + Name + ".txt", false);
 
-                    List<int> indexData = new List<int>();
-                    for (int i = -1; i < this.listBox1.Items.Count; i++)
+                    StringBuilder sb = new StringBuilder();
+                    foreach (DataGridViewRow dr in dataGridView1.Rows)
                     {
-                        int index = this.listBox1.FindString("鼠标", i);
-                        indexData.Add(index);
-                        if (index != -1)
+                        string temp = string.Empty;
+                        if (dr.Cells["deviceName"].Value.ToString() == "鼠标")
                         {
-                            if (index == indexData[0] && i != -1)
+                            for (int i = 0; i < dataGridView1.ColumnCount; i++)
                             {
-                                break;//查找到开头就跳出
+                                if (dr.Cells[i].ValueType == typeof(System.Drawing.Image))
+                                {
+                                    continue;
+                                }
+                                temp += dr.Cells[i].Value + ";";
                             }
-                            var item = this.listBox1.Items[index];
-                            sw.WriteLine(item);
+                            sb.AppendLine(temp);
                         }
-                        i = index - 1;
                     }
+                    sw.WriteLine(sb.ToString());
                     if (Settings.Default.radYesState && !Settings.Default.radNoState)
                     {
-                    listBox1.Items.Clear();//清理输出窗口
+                        dataGridView1.Rows.Clear();//清理输出窗口
                     }
                 }
                 catch (Exception ex)
@@ -280,25 +282,27 @@ namespace GlobalHook
                     }
                     else
                         sw = new StreamWriter(strPath + "\\" + Name + ".txt", false);
-                    List<int> indexData = new List<int>();
-                    for (int i = -1; i < this.listBox1.Items.Count; i++)
+                    StringBuilder sb = new StringBuilder();
+                    foreach (DataGridViewRow dr in dataGridView1.Rows)
                     {
-                        int index = this.listBox1.FindString("键盘", i);
-                        indexData.Add(index);
-                        if (index != -1)
+                        string temp = string.Empty;
+                        if (dr.Cells["deviceName"].Value.ToString() == "键盘")
                         {
-                            if (index == indexData[0] && i != -1)
+                            for (int i = 0; i < dataGridView1.ColumnCount; i++)
                             {
-                                break;
+                                if (dr.Cells[i].ValueType == typeof(System.Drawing.Image))
+                                {
+                                    continue;
+                                }
+                                temp += dr.Cells[i].Value + ";";
                             }
-                            var item = this.listBox1.Items[index];
-                            sw.WriteLine(item);
+                            sb.AppendLine(temp);
                         }
-                        i = index - 1;
                     }
+                    sw.WriteLine(sb.ToString());
                     if (Settings.Default.radYesState && !Settings.Default.radNoState)
                     {
-                        listBox1.Items.Clear();
+                        dataGridView1.Rows.Clear();
                     }
                 }
                 catch (Exception ex)
@@ -327,13 +331,24 @@ namespace GlobalHook
                     }
                     else
                         sw = new StreamWriter(strPath + "\\" + Name + ".txt", false);
-                    for (int i = 0; i < listBox1.Items.Count; i++)
+                    StringBuilder sb = new StringBuilder();
+                    foreach (DataGridViewRow dr in dataGridView1.Rows)
                     {
-                        sw.WriteLine(listBox1.Items[i].ToString());
+                        string temp = string.Empty;
+                        for (int i = 0; i < dataGridView1.ColumnCount; i++)
+                        {
+                            if (dr.Cells[i].ValueType == typeof(System.Drawing.Image))
+                            {
+                                continue;
+                            }
+                            temp += dr.Cells[i].Value + ";";
+                        }
+                        sb.AppendLine(temp);
                     }
+                    sw.WriteLine(sb.ToString());
                     if (Settings.Default.radYesState && !Settings.Default.radNoState)
                     {
-                        listBox1.Items.Clear();
+                        dataGridView1.Rows.Clear();
                     }
                 }
                 catch (Exception ex)
@@ -418,11 +433,21 @@ namespace GlobalHook
                 //string lst = listBox1.Items.Count;
                 str = saveFileDialog1.FileName;
                 myStream = new StreamWriter(saveFileDialog1.FileName);
-                for (int i = 0; i < listBox1.Items.Count; i++)
+                StringBuilder sb = new StringBuilder();
+                foreach (DataGridViewRow dr in dataGridView1.Rows)
                 {
-                    myStream.WriteLine(listBox1.Items[i].ToString());
+                    string temp = string.Empty;
+                    for (int i = 0; i < dataGridView1.ColumnCount; i++)
+                    {
+                        if (dr.Cells[i].ValueType == typeof(System.Drawing.Image))
+                        {
+                            continue;
+                        }
+                        temp += dr.Cells[i].Value + ";";
+                    }
+                    sb.AppendLine(temp);
                 }
-                //myStream.Write(lst); 
+                myStream.WriteLine(sb.ToString());
                 myStream.Flush();
                 myStream.Close();
             }
@@ -441,23 +466,24 @@ namespace GlobalHook
                 string str;
                 str = saveFileDialog1.FileName;
                 myStream = new StreamWriter(saveFileDialog1.FileName);
-
-                List<int> indexData = new List<int>();
-                for (int i = -1; i < listBox1.Items.Count; i++)
+                StringBuilder sb = new StringBuilder();
+                foreach (DataGridViewRow dr in dataGridView1.Rows)
                 {
-                    int index = listBox1.FindString("键盘", i);
-                    indexData.Add(index);
-                    if (index != -1)
+                    string temp = string.Empty;
+                    if (dr.Cells["deviceName"].Value.ToString() == "键盘")
                     {
-                        if (index == indexData[0] && i != -1)
+                        for (int i = 0; i < dataGridView1.ColumnCount; i++)
                         {
-                            break;
+                            if (dr.Cells[i].ValueType == typeof(System.Drawing.Image))
+                            {
+                                continue;
+                            }
+                            temp += dr.Cells[i].Value + ";";
                         }
-                        var item = listBox1.Items[index];
-                        myStream.WriteLine(item);
+                        sb.AppendLine(temp);
                     }
-                    i = index - 1;
                 }
+                myStream.WriteLine(sb.ToString());
                 myStream.Flush();
                 myStream.Close();
             }
@@ -476,23 +502,24 @@ namespace GlobalHook
                 string str;
                 str = saveFileDialog1.FileName;
                 myStream = new StreamWriter(saveFileDialog1.FileName);
-
-                List<int> indexData = new List<int>();
-                for (int i = -1; i < listBox1.Items.Count; i++)
+                StringBuilder sb = new StringBuilder();
+                foreach (DataGridViewRow dr in dataGridView1.Rows)
                 {
-                    int index = listBox1.FindString("鼠标", i);
-                    indexData.Add(index);
-                    if (index != -1)
+                    string temp = string.Empty;
+                    if (dr.Cells["deviceName"].Value.ToString() == "鼠标")
                     {
-                        if (index == indexData[0] && i != -1)
+                        for (int i = 0; i < dataGridView1.ColumnCount; i++)
                         {
-                            break;
+                            if (dr.Cells[i].ValueType == typeof(System.Drawing.Image))
+                            {
+                                continue;
+                            }
+                            temp += dr.Cells[i].Value + ";";
                         }
-                        var item = listBox1.Items[index];
-                        myStream.WriteLine(item);
+                        sb.AppendLine(temp);
                     }
-                    i = index - 1;
                 }
+                myStream.WriteLine(sb.ToString());
                 myStream.Flush();
                 myStream.Close();
             }
@@ -531,6 +558,7 @@ namespace GlobalHook
         {
             string info = string.Empty;
             string tit = string.Empty;
+            Icon ico = null;
 
             #region 获取活动窗口进程信息
             //try
@@ -557,21 +585,55 @@ namespace GlobalHook
                 Point p = new Point(x, y);
                 IntPtr formHandle = WindowFromPoint(p);//得到窗口句柄 
                 StringBuilder title = new StringBuilder(256);
-                //title.Length = 100;
                 GetWindowText(formHandle, title, title.Capacity);//得到窗口的标题 
                 StringBuilder className = new StringBuilder(256);
-                GetClassName(formHandle, className, className.Capacity);//得到窗口的句柄 
-                //info = "当前窗口：" + title.ToString() + " " + "窗口ID：" + formHandle.ToString() + " " + "窗口所属：" + className.ToString();
+                GetClassName(formHandle, className, className.Capacity);//得到窗口的句柄
+                //获取路径
+                int pId = 0;
+                IntPtr pHandle = IntPtr.Zero;
+                GetWindowThreadProcessId(formHandle, out pId);
+                pHandle = OpenProcess(PROCESS_ALL_ACCESS, 0, pId);
+                StringBuilder sb = new StringBuilder(MAX_PATH);
+                //GetModuleFileName(pHandle, sb, sb.Capacity);
+                GetModuleFileNameEx(pHandle, IntPtr.Zero, sb, MAX_PATH);
+                CloseHandle(pHandle);
+                //获取图标
+                IntPtr[] largeIcons, smallIcons;
+                int IconCount = ExtractIconEx(sb.ToString(), -1, null, null, 0);
+                largeIcons = new IntPtr[IconCount];
+                smallIcons = new IntPtr[IconCount];
+                ExtractIconEx(sb.ToString(), 0, largeIcons, smallIcons, IconCount);
+                IntPtr icon = new IntPtr(0);
+                try
+                {
+                    icon = largeIcons[0];
+                    ico = Icon.FromHandle(icon);
+                }
+                catch (Exception ex)
+                {
+                    Console.Out.WriteLine(ex.Message);
+                }
                 tit = title.ToString();
-                info = className.ToString();
+                info = sb.ToString();
             }
             catch (Exception ex)
             {
                 tit = ex.Message;
                 info = ex.Message;
             }
-            listBox1.Items.Add("鼠标;" + e.Button + ";" + e.X + ";" + e.Y + ";" + tit + ";" + info + ";" + DateTime.Now.ToString());
-            this.listBox1.TopIndex = this.listBox1.Items.Count - 1;
+            //listBox1.Items.Add("鼠标;" + e.Button + ";" + e.X + ";" + e.Y + ";" + tit + ";" + info + ";" + DateTime.Now.ToString());
+            //this.listBox1.TopIndex = this.listBox1.Items.Count - 1;
+            int index = dataGridView1.Rows.Add();
+            dataGridView1.Rows[index].Cells["keyboard"].Value = global::GlobalHook.Properties.Resources.mousec;
+            dataGridView1.Rows[index].Cells["deviceName"].Value = "鼠标";
+            dataGridView1.Rows[index].Cells["KeyDate"].Value = e.Button;
+            dataGridView1.Rows[index].Cells["LocationX"].Value = e.X;
+            dataGridView1.Rows[index].Cells["LocationY"].Value = e.Y;
+            dataGridView1.Rows[index].Cells["Title"].Value = tit;
+            dataGridView1.Rows[index].Cells["ClassName"].Value = info;
+            dataGridView1.Rows[index].Cells["Date"].Value = DateTime.Now.ToString();
+            dataGridView1.Rows[index].Cells["ProgramIcon"].Value = ico;
+            dataGridView1.CurrentCell = dataGridView1.Rows[index].Cells[0];
         }
 
         void m_hook_MouseMove(object sender, MouseEventArgs e)
@@ -622,23 +684,60 @@ namespace GlobalHook
 
             string info = string.Empty;
             string tit = string.Empty;
+            Icon ico = null;
             try
             {
                 IntPtr formHandle = GetForegroundWindow();
                 StringBuilder title = new StringBuilder(256);
                 GetWindowText(formHandle, title, title.Capacity);//得到窗口的标题 
                 StringBuilder className = new StringBuilder(256);
-                GetClassName(formHandle, className, className.Capacity);//得到窗口的句柄 
+                GetClassName(formHandle, className, className.Capacity);//得到窗口的句柄
+                //获取路径
+                int pId = 0;
+                IntPtr pHandle = IntPtr.Zero;
+                GetWindowThreadProcessId(formHandle, out pId);
+                pHandle = OpenProcess(PROCESS_ALL_ACCESS, 0, pId);
+                StringBuilder sb = new StringBuilder(MAX_PATH);
+                //GetModuleFileName(pHandle, sb, sb.Capacity);
+                GetModuleFileNameEx(pHandle, IntPtr.Zero, sb, MAX_PATH);
+                CloseHandle(pHandle);
+                //获取图标
+                IntPtr[] largeIcons, smallIcons;
+                int IconCount = ExtractIconEx(sb.ToString(), -1, null, null, 0);
+                largeIcons = new IntPtr[IconCount];
+                smallIcons = new IntPtr[IconCount];
+                ExtractIconEx(sb.ToString(), 0, largeIcons, smallIcons, IconCount);
+                IntPtr icon = new IntPtr(0);
+                try
+                {
+                    icon = largeIcons[0];
+                    ico = Icon.FromHandle(icon);
+                }
+                catch (Exception ex)
+                {
+                    Console.Out.WriteLine(ex.Message);
+                }
                 tit = title.ToString();
-                info = className.ToString();
+                info = sb.ToString();
             }
             catch (Exception ex)
             {
                 tit = ex.Message;
                 info = ex.Message;
             }
-            listBox1.Items.Add("键盘;" + e.KeyData + ";" + "" + ";" + "" + ";" + tit + ";" + info + ";" + DateTime.Now.ToString());
-            this.listBox1.TopIndex = this.listBox1.Items.Count - 1;
+            //listBox1.Items.Add("键盘;" + e.KeyData + ";" + "" + ";" + "" + ";" + tit + ";" + info + ";" + DateTime.Now.ToString());
+            //this.listBox1.TopIndex = this.listBox1.Items.Count - 1;
+            int index = dataGridView1.Rows.Add();
+            dataGridView1.Rows[index].Cells["keyboard"].Value = global::GlobalHook.Properties.Resources.keyboardc;
+            dataGridView1.Rows[index].Cells["deviceName"].Value = "键盘";
+            dataGridView1.Rows[index].Cells["KeyDate"].Value = e.KeyData;
+            dataGridView1.Rows[index].Cells["LocationX"].Value = "";
+            dataGridView1.Rows[index].Cells["LocationY"].Value = "";
+            dataGridView1.Rows[index].Cells["Title"].Value = tit;
+            dataGridView1.Rows[index].Cells["ClassName"].Value = info;
+            dataGridView1.Rows[index].Cells["Date"].Value = DateTime.Now.ToString();
+            dataGridView1.Rows[index].Cells["ProgramIcon"].Value = ico;
+            dataGridView1.CurrentCell = dataGridView1.Rows[index].Cells[0];
         }
         #endregion
 
@@ -672,6 +771,24 @@ namespace GlobalHook
         private static extern IntPtr WindowFromPoint(
         Point Point  //坐标 
         );
+        private const int MAX_PATH = 260;
+        public const int PROCESS_ALL_ACCESS = 0x000F0000 | 0x00100000 | 0xFFF;
+
+        [DllImport("Kernel32.dll")]
+        public extern static IntPtr OpenProcess(int fdwAccess, int fInherit, int IDProcess);
+        [DllImport("shell32.dll")]
+        public extern static bool TerminateProcess(IntPtr hProcess, int uExitCode);
+
+        [DllImport("shell32.dll", EntryPoint = "GetModuleFileName")]
+        private static extern uint GetModuleFileName(IntPtr hModule, [Out] StringBuilder lpszFileName, int nSize);
+
+        [System.Runtime.InteropServices.DllImport("shell32.dll")]
+        private static extern int ExtractIconEx(string lpszFile, int niconIndex, IntPtr[] phiconLarge, IntPtr[] phiconSmall, int nIcons);
+
+        [DllImport("psapi.dll")]
+        static extern uint GetModuleFileNameEx(IntPtr hProcess, IntPtr hModule, [Out] StringBuilder lpBaseName, [In] [MarshalAs(UnmanagedType.U4)] int nSize);
+        [DllImport("Kernel32.dll")]
+        public extern static bool CloseHandle(IntPtr hObject);
         #endregion
     }
 }

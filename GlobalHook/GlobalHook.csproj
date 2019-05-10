@@ -214,6 +214,10 @@
     <Content Include="Help.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Resources\GlobalHook.ico" />
+    <Content Include="Resources\keyboardc.png" />
+    <Content Include="Resources\mousec.png" />
+    <Content Include="Resources\系统.png" />
     <None Include="Resources\display.png" />
     <None Include="Resources\Filter.png" />
     <None Include="Resources\open.png" />

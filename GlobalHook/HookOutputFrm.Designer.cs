@@ -33,10 +33,10 @@
             this.toolStripStatusLabel5 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.listBox1 = new System.Windows.Forms.ListBox();
             this.toolStripStatusLabel4 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.statusStrip3 = new System.Windows.Forms.StatusStrip();
             this.statusStrip2 = new System.Windows.Forms.StatusStrip();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
@@ -59,7 +59,27 @@
             this.保存ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.设置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.退出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.keyboard = new System.Windows.Forms.DataGridViewImageColumn();
+            this.deviceName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.KeyDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LocationX = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LocationY = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Title = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProgramIcon = new System.Windows.Forms.DataGridViewImageColumn();
+            this.ClassName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.statusStrip3.SuspendLayout();
             this.statusStrip2.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -86,18 +106,6 @@
             this.toolStripStatusLabel2.Size = new System.Drawing.Size(84, 20);
             this.toolStripStatusLabel2.Text = "系统时间：";
             // 
-            // listBox1
-            // 
-            this.listBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.HorizontalScrollbar = true;
-            this.listBox1.ItemHeight = 15;
-            this.listBox1.Location = new System.Drawing.Point(0, 0);
-            this.listBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(645, 287);
-            this.listBox1.TabIndex = 0;
-            // 
             // toolStripStatusLabel4
             // 
             this.toolStripStatusLabel4.Name = "toolStripStatusLabel4";
@@ -112,23 +120,50 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.listBox1);
+            this.panel1.Controls.Add(this.dataGridView1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 27);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(645, 287);
+            this.panel1.Size = new System.Drawing.Size(882, 451);
             this.panel1.TabIndex = 9;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AllowUserToOrderColumns = true;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.keyboard,
+            this.deviceName,
+            this.KeyDate,
+            this.LocationX,
+            this.LocationY,
+            this.Title,
+            this.ProgramIcon,
+            this.ClassName,
+            this.Date});
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
+            this.dataGridView1.MultiSelect = false;
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.RowHeadersVisible = false;
+            this.dataGridView1.RowTemplate.Height = 27;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView1.Size = new System.Drawing.Size(882, 451);
+            this.dataGridView1.TabIndex = 1;
             // 
             // statusStrip3
             // 
             this.statusStrip3.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel3,
             this.toolStripStatusLabel4});
-            this.statusStrip3.Location = new System.Drawing.Point(0, 314);
+            this.statusStrip3.Location = new System.Drawing.Point(0, 478);
             this.statusStrip3.Name = "statusStrip3";
             this.statusStrip3.Padding = new System.Windows.Forms.Padding(1, 0, 19, 0);
-            this.statusStrip3.Size = new System.Drawing.Size(645, 25);
+            this.statusStrip3.Size = new System.Drawing.Size(882, 25);
             this.statusStrip3.TabIndex = 8;
             this.statusStrip3.Text = "statusStrip3";
             // 
@@ -136,10 +171,10 @@
             // 
             this.statusStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel5});
-            this.statusStrip2.Location = new System.Drawing.Point(0, 339);
+            this.statusStrip2.Location = new System.Drawing.Point(0, 503);
             this.statusStrip2.Name = "statusStrip2";
             this.statusStrip2.Padding = new System.Windows.Forms.Padding(1, 0, 19, 0);
-            this.statusStrip2.Size = new System.Drawing.Size(645, 25);
+            this.statusStrip2.Size = new System.Drawing.Size(882, 25);
             this.statusStrip2.TabIndex = 7;
             this.statusStrip2.Text = "statusStrip2";
             // 
@@ -148,10 +183,10 @@
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1,
             this.toolStripStatusLabel2});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 364);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 528);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Padding = new System.Windows.Forms.Padding(1, 0, 19, 0);
-            this.statusStrip1.Size = new System.Drawing.Size(645, 25);
+            this.statusStrip1.Size = new System.Drawing.Size(882, 25);
             this.statusStrip1.TabIndex = 6;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -167,7 +202,7 @@
             this.toolStripButton7});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(645, 27);
+            this.toolStrip1.Size = new System.Drawing.Size(882, 27);
             this.toolStrip1.TabIndex = 5;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -301,11 +336,170 @@
             this.退出ToolStripMenuItem.Text = "退出";
             this.退出ToolStripMenuItem.Click += new System.EventHandler(this.退出ToolStripMenuItem_Click);
             // 
+            // dataGridViewImageColumn1
+            // 
+            this.dataGridViewImageColumn1.HeaderText = "图标";
+            this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
+            this.dataGridViewImageColumn1.ReadOnly = true;
+            this.dataGridViewImageColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewImageColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.dataGridViewImageColumn1.Width = 50;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.FillWeight = 40F;
+            this.dataGridViewTextBoxColumn1.HeaderText = "名称";
+            this.dataGridViewTextBoxColumn1.MinimumWidth = 40;
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Width = 74;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn2.FillWeight = 60F;
+            this.dataGridViewTextBoxColumn2.HeaderText = "按下的键";
+            this.dataGridViewTextBoxColumn2.MinimumWidth = 60;
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn3.FillWeight = 50F;
+            this.dataGridViewTextBoxColumn3.HeaderText = "X坐标";
+            this.dataGridViewTextBoxColumn3.MinimumWidth = 50;
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn4.FillWeight = 50F;
+            this.dataGridViewTextBoxColumn4.HeaderText = "Y坐标";
+            this.dataGridViewTextBoxColumn4.MinimumWidth = 50;
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn5.FillWeight = 80F;
+            this.dataGridViewTextBoxColumn5.HeaderText = "窗口标题";
+            this.dataGridViewTextBoxColumn5.MinimumWidth = 80;
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            // 
+            // dataGridViewImageColumn2
+            // 
+            this.dataGridViewImageColumn2.HeaderText = "图标";
+            this.dataGridViewImageColumn2.Name = "dataGridViewImageColumn2";
+            this.dataGridViewImageColumn2.ReadOnly = true;
+            this.dataGridViewImageColumn2.Width = 50;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn6.FillWeight = 80F;
+            this.dataGridViewTextBoxColumn6.HeaderText = "窗口所属";
+            this.dataGridViewTextBoxColumn6.MinimumWidth = 80;
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            this.dataGridViewTextBoxColumn7.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn7.FillWeight = 50F;
+            this.dataGridViewTextBoxColumn7.HeaderText = "时间";
+            this.dataGridViewTextBoxColumn7.MinimumWidth = 50;
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            this.dataGridViewTextBoxColumn7.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn8
+            // 
+            this.dataGridViewTextBoxColumn8.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn8.FillWeight = 50F;
+            this.dataGridViewTextBoxColumn8.HeaderText = "时间";
+            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            this.dataGridViewTextBoxColumn8.ReadOnly = true;
+            // 
+            // keyboard
+            // 
+            this.keyboard.HeaderText = "";
+            this.keyboard.Name = "keyboard";
+            this.keyboard.ReadOnly = true;
+            this.keyboard.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.keyboard.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.keyboard.Width = 50;
+            // 
+            // deviceName
+            // 
+            this.deviceName.FillWeight = 40F;
+            this.deviceName.HeaderText = "名称";
+            this.deviceName.Name = "deviceName";
+            this.deviceName.ReadOnly = true;
+            this.deviceName.Width = 60;
+            // 
+            // KeyDate
+            // 
+            this.KeyDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.KeyDate.FillWeight = 60F;
+            this.KeyDate.HeaderText = "按下的键";
+            this.KeyDate.Name = "KeyDate";
+            this.KeyDate.ReadOnly = true;
+            // 
+            // LocationX
+            // 
+            this.LocationX.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.LocationX.FillWeight = 50F;
+            this.LocationX.HeaderText = "X坐标";
+            this.LocationX.Name = "LocationX";
+            this.LocationX.ReadOnly = true;
+            // 
+            // LocationY
+            // 
+            this.LocationY.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.LocationY.FillWeight = 50F;
+            this.LocationY.HeaderText = "Y坐标";
+            this.LocationY.Name = "LocationY";
+            this.LocationY.ReadOnly = true;
+            // 
+            // Title
+            // 
+            this.Title.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Title.FillWeight = 80F;
+            this.Title.HeaderText = "窗口标题";
+            this.Title.Name = "Title";
+            this.Title.ReadOnly = true;
+            // 
+            // ProgramIcon
+            // 
+            this.ProgramIcon.HeaderText = "图标";
+            this.ProgramIcon.Name = "ProgramIcon";
+            this.ProgramIcon.ReadOnly = true;
+            this.ProgramIcon.Width = 50;
+            // 
+            // ClassName
+            // 
+            this.ClassName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ClassName.FillWeight = 80F;
+            this.ClassName.HeaderText = "路径";
+            this.ClassName.Name = "ClassName";
+            this.ClassName.ReadOnly = true;
+            // 
+            // Date
+            // 
+            this.Date.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Date.FillWeight = 50F;
+            this.Date.HeaderText = "时间";
+            this.Date.Name = "Date";
+            this.Date.ReadOnly = true;
+            // 
             // HookOutputFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(645, 389);
+            this.ClientSize = new System.Drawing.Size(882, 553);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.statusStrip3);
             this.Controls.Add(this.statusStrip2);
@@ -319,6 +513,7 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.HookOutputFrm_FormClosing);
             this.Load += new System.EventHandler(this.HookOutputFrm_Load);
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.statusStrip3.ResumeLayout(false);
             this.statusStrip3.PerformLayout();
             this.statusStrip2.ResumeLayout(false);
@@ -351,7 +546,6 @@
         private System.Windows.Forms.ToolStripButton toolStripButton5;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.ImageList imageList1;
-        public System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.ToolStripButton toolStripButton6;
         private System.Windows.Forms.HelpProvider helpProvider1;
         private System.Windows.Forms.Timer timer2;
@@ -364,6 +558,26 @@
         private System.Windows.Forms.ToolStripMenuItem 保存ToolStripMenuItem;
         public System.Windows.Forms.NotifyIcon notifyIcon1;
         private System.Windows.Forms.ToolStripButton toolStripButton7;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
+        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn2;
+        private System.Windows.Forms.DataGridViewImageColumn keyboard;
+        private System.Windows.Forms.DataGridViewTextBoxColumn deviceName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn KeyDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn LocationX;
+        private System.Windows.Forms.DataGridViewTextBoxColumn LocationY;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Title;
+        private System.Windows.Forms.DataGridViewImageColumn ProgramIcon;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ClassName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Date;
     }
 }
 

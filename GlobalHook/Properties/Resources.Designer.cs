@@ -133,6 +133,16 @@ namespace GlobalHook.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap keyboardc {
+            get {
+                object obj = ResourceManager.GetObject("keyboardc", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap mouse {
             get {
                 object obj = ResourceManager.GetObject("mouse", resourceCulture);
@@ -146,6 +156,16 @@ namespace GlobalHook.Properties {
         internal static System.Drawing.Bitmap mouse_off {
             get {
                 object obj = ResourceManager.GetObject("mouse_off", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap mousec {
+            get {
+                object obj = ResourceManager.GetObject("mousec", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
