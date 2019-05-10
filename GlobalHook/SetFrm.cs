@@ -19,9 +19,9 @@ namespace GlobalHook
         public SetFrm()
         {
             InitializeComponent();
-            //Middle.SaveSet+=new Middle.SaveSetEventHandler(Middle_SaveSet);
-
         }
+
+        //加载设置
         private void SetFrm_Load(object sender, EventArgs e)
         {
             k_hook = new KeyboardHook();
@@ -45,6 +45,7 @@ namespace GlobalHook
             lbl_Key.Visible = true;
         }
 
+        //切换自动保存时
         private void rad_AutoSave_CheckedChanged(object sender, EventArgs e)
         {
             tb_SavePath.Enabled = true;
@@ -54,6 +55,7 @@ namespace GlobalHook
             tb_FileName.Enabled = true;
         }
 
+        //切换手动保存时
         private void rad_ManualSave_CheckedChanged(object sender, EventArgs e)
         {
             tb_SavePath.Enabled = false;
@@ -68,6 +70,7 @@ namespace GlobalHook
             //this.chk_Mouse.Checked = false;
         }
 
+        //双击设置隐藏快捷键
         private void lbl_Key_DoubleClick(object sender, EventArgs e)
         {
             lbl_Key.Visible = false;
@@ -75,6 +78,7 @@ namespace GlobalHook
             tb_SetKey.Text = "请按下要设置的键";
         }
 
+        //设置隐藏快捷键
         void k_hook_KeyDown(object sender, KeyEventArgs e)
         {
             tb_SetKey.Text = e.KeyData.ToString();
@@ -94,6 +98,7 @@ namespace GlobalHook
         {
             if (rad_AutoSave.Checked && !rad_ManualSave.Checked)
             {
+                //自动保存
                 if (tb_FileName.Text.Equals("") || tb_SavePath.Text.Equals("") || tb_Time.Text.Equals("") || (!chk_Key.Checked && !chk_Mouse.Checked))
                 {
                     MessageBox.Show("请确认所有保存选项是否更改");
@@ -111,9 +116,9 @@ namespace GlobalHook
                     Settings.Default.chkMouseState = this.chk_Mouse.Checked;
                 }
             }
-
-            if (rad_ManualSave.Checked && !rad_AutoSave.Checked)
+            else if (rad_ManualSave.Checked && !rad_AutoSave.Checked)
             {
+                //手动保存
                 hookFrm.DoSetManualSave();
                 Settings.Default.radAutoSaveState = this.rad_AutoSave.Checked;
                 Settings.Default.radManualSaveState = this.rad_ManualSave.Checked;
@@ -126,13 +131,14 @@ namespace GlobalHook
 
             if (rad_Yes.Checked && !rad_No.Checked)
             {
-                //清除输出栏选项
+                //保存后清除输出面板
                 //hookFrm.DoSetHideFrm(rad_Yes.Checked);
                 Settings.Default.radYesState = this.rad_Yes.Checked;
                 Settings.Default.radNoState = this.rad_No.Checked;
             }
-            if (rad_No.Checked && !rad_Yes.Checked)
+            else if (rad_No.Checked && !rad_Yes.Checked)
             {
+                //保存后不清除输出面板
                 Settings.Default.radYesState = this.rad_Yes.Checked;
                 Settings.Default.radNoState = this.rad_No.Checked;
             }
@@ -148,19 +154,21 @@ namespace GlobalHook
                     Settings.Default.lblKeyState = this.tb_SetKey.Text;
                     this.tb_SetKey.Text = "";
                     Settings.Default.tbSetKeyState = this.tb_SetKey.Text;
-                    //Settings.Default.Save();
                 }
             }
             if (Settings.Default.lblKeyState == "")//快捷键不为空
             {
                 Settings.Default.lblKeyState = "A,Alt";
             }
+
             if (chk_Prompt.Checked == true)
             {
                 Settings.Default.chkSave = true;
             }
             else
+            {
                 Settings.Default.chkSave = false;
+            }
 
             if (chk_Hide.Checked == true)
             {
@@ -170,6 +178,7 @@ namespace GlobalHook
             {
                 Settings.Default.chkHide = false;
             }
+
             if (chk_BootRun.Checked == true)
             {
                 Settings.Default.chkBootRun = true;
@@ -178,6 +187,7 @@ namespace GlobalHook
             {
                 Settings.Default.chkBootRun = false;
             }
+
             if (chk_HideRun.Checked == true)
             {
                 Settings.Default.chkHideRun = true;
@@ -199,6 +209,7 @@ namespace GlobalHook
             this.Close();
         }
 
+        //选择保存路径
         private void tb_SavePath_Click(object sender, EventArgs e)
         {
             System.Windows.Forms.FolderBrowserDialog dialog = new System.Windows.Forms.FolderBrowserDialog();
@@ -218,6 +229,7 @@ namespace GlobalHook
             }
         }
 
+        //设置开机启动
         private void chk_BootRun_CheckedChanged(object sender, EventArgs e)
         {
             try
@@ -245,6 +257,7 @@ namespace GlobalHook
             }
         }
 
+        //关闭钩子
         private void SetFrm_FormClosing(object sender, FormClosingEventArgs e)
         {
             k_hook.Stop();

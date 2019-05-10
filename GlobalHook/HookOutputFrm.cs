@@ -64,20 +64,25 @@ namespace GlobalHook
             m_hook.MouseMove += new MouseEventHandler(m_hook_MouseMove);//鼠标移动事件
             m_hook.Start();
             //状态栏显示
-            toolStripStatusLabel2.Text = "系统时间：" + DateTime.Now.ToString();
+            Timer timer1 = new Timer();
             timer1.Interval = 1000;
+            timer1.Tick += (ss, ee) => { toolStripStatusLabel2.Text = "系统时间：" + DateTime.Now.ToString(); };
             timer1.Start();
             //帮助文档实例
             HP = new HelpProvider();
             string Source = "Help.txt";
             HP.HelpNamespace = Source;
             HP.SetShowHelp(this, true);
+            //是否自动保存
             if (Settings.Default.radAutoSaveState && !(Settings.Default.radManualSaveState))
             {
                 DoSetAutoSave(Settings.Default.tbSavePathState, Settings.Default.tbTimeState, Settings.Default.chkKeyState, Settings.Default.chkMouseState, Settings.Default.tbName);
             }
             else
+            {
                 DoSetManualSave();
+            }
+            //保存后是否清除输出
             if(Settings.Default.radYesState&&!(Settings.Default.radNoState))
             {
                 DoSetShowFrm(Settings.Default.radYesState);
@@ -94,9 +99,6 @@ namespace GlobalHook
             {
                 this.Show();
                 notifyIcon1.Visible = true;
-                this.WindowState = FormWindowState.Normal;
-                this.Activate();
-                this.ShowInTaskbar = true;
             }
         }
         #region 工具栏事件
@@ -106,7 +108,6 @@ namespace GlobalHook
             if (toolStripButton1.Text.Equals("禁止监测键盘"))
             {
                 k_hook.Stop();//执行Stop方法终止键盘钩子
-                //更改点击后的状态
                 toolStripButton1.Text = "开始键盘监测";
                 toolStripButton1.Image = imageList1.Images[0];
             }
@@ -136,18 +137,6 @@ namespace GlobalHook
 
         private void toolStripButton3_Click(object sender, EventArgs e)
         {
-            #region 隐藏输出信息
-            //if (toolStripButton3.Text.Equals("隐藏"))
-            //{
-            //    panel1.Visible = false;
-            //    toolStripButton3.Text = "显示";
-            //}
-            //else
-            //{
-            //    panel1.Visible = true;
-            //    toolStripButton3.Text = "隐藏";
-            //}
-            #endregion
             DialogResult result = MessageBox.Show("确定清除当前输出面板吗", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result==DialogResult.Yes)
             {
@@ -184,13 +173,9 @@ namespace GlobalHook
         #region 通知栏事件
         private void notifyIcon1_Click(object sender, EventArgs e)
         {
-            if (this.WindowState == FormWindowState.Minimized)
-            {
-                this.Show();
-                this.WindowState = FormWindowState.Normal;
-                this.Activate();
-                this.ShowInTaskbar = true;
-            }
+            this.Show();
+            this.Activate();
+            this.ShowInTaskbar = true;
         }
         private void 打开ToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -199,7 +184,6 @@ namespace GlobalHook
 
         private void 退出ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //toolStripButton4_Click(sender,e);
             notifyIcon1.Visible = false;
             this.Dispose();
             this.Close();
@@ -222,15 +206,6 @@ namespace GlobalHook
         #endregion
 
         #region 其他事件
-        /// <summary>
-        /// 状态栏系统时间
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            toolStripStatusLabel2.Text = "系统时间：" + DateTime.Now.ToString();
-        }
 
         StreamWriter sw;//实例化流
         private void timer2_Tick(object sender, EventArgs e)
@@ -371,8 +346,8 @@ namespace GlobalHook
                     sw.Close();
                 }
             }
-            
         }
+
         private void HookOutputFrm_FormClosing(object sender, FormClosingEventArgs e)
         {
             CloseFrm closeFrm = new CloseFrm(); ;
@@ -533,12 +508,6 @@ namespace GlobalHook
         {
             this.nodata = nodata;
         }
-        //public string Keydata;
-        //public void HookOutputFrm_SetKey(string keydata)
-        //{
-        //    //this.timer2.Enabled = true;
-        //    this.Keydata = keydata;
-        //}
 
         public string strPath;//路径参数
         public bool KeySelect;//键盘选项
@@ -634,16 +603,21 @@ namespace GlobalHook
                     if (Settings.Default.chkHide == true)
                     {
                         notifyIcon1.Visible = false;
+                        this.ShowInTaskbar = false;
                     }
                     else
-                        notifyIcon1.Visible = true;
-                }
-                else  
                     {
+                        notifyIcon1.Visible = true;
+                        this.ShowInTaskbar = true;
+                    }
+                }
+                else
+                {
+                    this.ShowInTaskbar = true;
                     notifyIcon1.Visible = true;
                     this.WindowState = FormWindowState.Normal;
                     this.Show();
-                    }
+                }
             }
 
             string info = string.Empty;
@@ -663,20 +637,17 @@ namespace GlobalHook
                 tit = ex.Message;
                 info = ex.Message;
             }
-            //Keys k = (Keys)e.KeyValue;
-            //listBox1.Items.Add("键盘按下" + k.ToString());
             listBox1.Items.Add("键盘;" + e.KeyData + ";" + "" + ";" + "" + ";" + tit + ";" + info + ";" + DateTime.Now.ToString());
-            //this.listBox1.SelectedIndex = this.listBox1.Items.Count - 1;
             this.listBox1.TopIndex = this.listBox1.Items.Count - 1;
         }
         #endregion
 
         #region 调用
+        //获取活动窗口句柄
         [DllImport("User32.DLL")]
-        static extern IntPtr GetForegroundWindow();//获取活动窗口句柄
-        //[DllImport("User32.dll")]
-        //static extern int GetWindowText(IntPtr WinHandle, StringBuilder Title, int size);
+        static extern IntPtr GetForegroundWindow();
 
+        //获取窗口标题
         [DllImport("user32", SetLastError = true)] 
         public static extern int GetWindowText( 
         IntPtr hWnd,//窗口句柄 
@@ -684,6 +655,7 @@ namespace GlobalHook
         int nMaxCount //最大值 
         );
 
+        //根据句柄获取ID
         [DllImport("User32.dll", CharSet = CharSet.Auto)]
         public static extern int GetWindowThreadProcessId(IntPtr hwnd, out int ID);//获取线程id
 
@@ -701,8 +673,6 @@ namespace GlobalHook
         Point Point  //坐标 
         );
         #endregion
-
-        
     }
 }
 

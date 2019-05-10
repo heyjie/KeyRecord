@@ -15,7 +15,6 @@ namespace GlobalHook
 {
     public partial class ProcessFrm : Form
     {
-        Thread thread1;
         public ProcessFrm()
         {
             InitializeComponent();
@@ -23,44 +22,46 @@ namespace GlobalHook
 
         private void ProcessFrm_Load(object sender, EventArgs e)
         {
-            Control.CheckForIllegalCrossThreadCalls = false;//不检查跨线程的调用是否合法
-            //创建无参的线程
-            this.thread1 = new Thread(new ThreadStart(this.Thread1));
-            this.thread1.Start();//调用Start方法执行线程
-            //timer1.Enabled = true;
+            new Thread(() =>
+            {
+                Thread1();
+            }).Start();
         }
+
         private void Thread1()
         {
-            //Thread.Sleep(3000);//该线程睡眠3s
             Process[] ps = Process.GetProcesses();
+            List<Procession> pro = new List<Procession>();
             foreach (Process p in ps)
             {
-                string info = "";
-                try
+                Procession po = new Procession();
+                try { po.Id = p.Id; }
+                catch { po.Id = -1; }
+                try { po.MainWindowTitle = p.MainWindowTitle; }
+                catch { po.MainWindowTitle = "拒绝访问"; }
+                try { po.ProcessName = p.ProcessName; }
+                catch { po.ProcessName = "拒绝访问"; }
+                try { po.StartTime = p.StartTime; }
+                catch { po.StartTime = new DateTime(); }
+                pro.Add(po);
+                this.Invoke(new Action(() =>
                 {
-                    info = p.Id + "  " + p.ProcessName + "  " + p.MainWindowTitle + "  " + p.StartTime;
-                    this.toolStripProgressBar1.Maximum++;
-                }
-                catch (Exception ex)
-                {
-                    info = ex.Message;
-
-                }
-                this.listBox1.Items.Add(info);
-                //this.listBox1.TopIndex = this.listBox1.Items.Count - (int)(this.listBox1.Height / this.listBox1.ItemHeight);
-                this.listBox1.TopIndex = this.listBox1.Items.Count - 1;
-                if (this.toolStripProgressBar1.Maximum > toolStripProgressBar1.Value)
-                {
-                    toolStripProgressBar1.Value++;
-                }
+                    toolStripProgressBar1.Increment(2);
+                }));
             }
-            toolStripProgressBar1.Value = toolStripProgressBar1.Maximum;
-            toolStripStatusLabel1.Text = "完成";
-        }
-
-        private void ProcessFrm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            thread1.Abort();
+            this.Invoke(new Action(() =>
+            {
+                foreach (var item in pro)
+                {
+                    int index = dataGridView1.Rows.Add();
+                    dataGridView1.Rows[index].Cells[0].Value = item.Id;
+                    dataGridView1.Rows[index].Cells[1].Value = item.MainWindowTitle;
+                    dataGridView1.Rows[index].Cells[2].Value = item.ProcessName;
+                    dataGridView1.Rows[index].Cells[3].Value = item.StartTime;
+                }
+                toolStripProgressBar1.Value = toolStripProgressBar1.Maximum;
+                toolStripStatusLabel1.Text = "完成";
+            }));
         }
 
         void RandomProgressBar()
@@ -101,5 +102,17 @@ namespace GlobalHook
             }
             toolStripProgressBar1.Size = new Size(100, 16);
         }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+    }
+    public class Procession
+    {
+        public int Id;
+        public string ProcessName;
+        public string MainWindowTitle;
+        public DateTime StartTime;
     }
 }

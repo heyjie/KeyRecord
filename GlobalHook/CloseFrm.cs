@@ -36,6 +36,7 @@ namespace GlobalHook
             }
             else
                 Settings.Default.chkSave = true;
+            Settings.Default.Save();
             this.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.Close();
         }
@@ -45,11 +46,6 @@ namespace GlobalHook
             this.rb_Min.Checked = Settings.Default.rbMin;
             this.rb_Max.Checked = Settings.Default.rbMax;
             this.checkBox1.Checked = !Settings.Default.chkSave;
-        }
-
-        private void CloseFrm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            Settings.Default.Save();
         }
     }
 }

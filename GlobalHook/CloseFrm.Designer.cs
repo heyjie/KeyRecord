@@ -133,7 +133,6 @@
             this.Name = "CloseFrm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "关闭提示";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CloseFrm_FormClosing);
             this.Load += new System.EventHandler(this.CloseFrm_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

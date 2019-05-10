@@ -40,7 +40,6 @@
             this.statusStrip3 = new System.Windows.Forms.StatusStrip();
             this.statusStrip2 = new System.Windows.Forms.StatusStrip();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
@@ -94,7 +93,7 @@
             this.listBox1.HorizontalScrollbar = true;
             this.listBox1.ItemHeight = 15;
             this.listBox1.Location = new System.Drawing.Point(0, 0);
-            this.listBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.listBox1.Margin = new System.Windows.Forms.Padding(4);
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(645, 287);
             this.listBox1.TabIndex = 0;
@@ -116,7 +115,7 @@
             this.panel1.Controls.Add(this.listBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 27);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(645, 287);
             this.panel1.TabIndex = 9;
@@ -155,10 +154,6 @@
             this.statusStrip1.Size = new System.Drawing.Size(645, 25);
             this.statusStrip1.TabIndex = 6;
             this.statusStrip1.Text = "statusStrip1";
-            // 
-            // timer1
-            // 
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // toolStrip1
             // 
@@ -317,7 +312,7 @@
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.toolStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "HookOutputFrm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "全局键鼠监测日志";
@@ -352,7 +347,6 @@
         private System.Windows.Forms.StatusStrip statusStrip2;
         private System.Windows.Forms.ToolStripButton toolStripButton2;
         private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton toolStripButton5;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
