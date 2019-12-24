@@ -11,7 +11,7 @@ using System.Windows.Forms.VisualStyles;
 using System.Collections;
 using System.Reflection;
 
-namespace GlobalHook
+namespace GlobalHook.Common
 {
     /// <summary>
     /// 在DataGridViewColumnHeaderCell中提供下拉筛选器列表。

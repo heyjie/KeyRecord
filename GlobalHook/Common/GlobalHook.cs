@@ -9,7 +9,7 @@ using System.Windows.Forms;
 using System.Diagnostics;
 using System.Drawing;
 
-namespace GlobalHook
+namespace GlobalHook.Common
 {
     /*
      * 
@@ -111,6 +111,10 @@ namespace GlobalHook
         protected const int WM_LBUTTONDBLCLK = 0x203;//双击左键 515（int）
         protected const int WM_RBUTTONDBLCLK = 0x206;//双击右键 518（int）
         protected const int WM_MBUTTONDBLCLK = 0x209;//双击中健 521（int）
+        //private const int WM_XBUTTONUP = 0x020C;//自定义按键释放
+        //private const int WM_XBUTTONDOWN = 0x020B;//自定义按键按下
+        //private const int MD_XBUTTON1 = 0x10000;//自定义键一
+        //private const int MD_XBUTTON2 = 0x20000;//自定义键二
         protected const int WM_MOUSEWHEEL = 0x020A;
         protected const int WM_KEYDOWN = 0x100;
         protected const int WM_KEYUP = 0x101;

@@ -37,6 +37,15 @@
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.keyboard = new System.Windows.Forms.DataGridViewImageColumn();
+            this.deviceName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.KeyDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LocationX = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LocationY = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Title = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProgramIcon = new System.Windows.Forms.DataGridViewImageColumn();
+            this.ClassName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.statusStrip3 = new System.Windows.Forms.StatusStrip();
             this.statusStrip2 = new System.Windows.Forms.StatusStrip();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
@@ -69,15 +78,6 @@
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.keyboard = new System.Windows.Forms.DataGridViewImageColumn();
-            this.deviceName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.KeyDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LocationX = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LocationY = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Title = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ProgramIcon = new System.Windows.Forms.DataGridViewImageColumn();
-            this.ClassName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.statusStrip3.SuspendLayout();
@@ -125,7 +125,7 @@
             this.panel1.Location = new System.Drawing.Point(0, 27);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(882, 451);
+            this.panel1.Size = new System.Drawing.Size(982, 501);
             this.panel1.TabIndex = 9;
             // 
             // dataGridView1
@@ -152,46 +152,119 @@
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowTemplate.Height = 27;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(882, 451);
+            this.dataGridView1.Size = new System.Drawing.Size(982, 501);
             this.dataGridView1.TabIndex = 1;
+            // 
+            // keyboard
+            // 
+            this.keyboard.HeaderText = "";
+            this.keyboard.Name = "keyboard";
+            this.keyboard.ReadOnly = true;
+            this.keyboard.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.keyboard.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.keyboard.Width = 50;
+            // 
+            // deviceName
+            // 
+            this.deviceName.FillWeight = 40F;
+            this.deviceName.HeaderText = "名称";
+            this.deviceName.Name = "deviceName";
+            this.deviceName.ReadOnly = true;
+            this.deviceName.Width = 60;
+            // 
+            // KeyDate
+            // 
+            this.KeyDate.FillWeight = 60F;
+            this.KeyDate.HeaderText = "按下的键";
+            this.KeyDate.Name = "KeyDate";
+            this.KeyDate.ReadOnly = true;
+            // 
+            // LocationX
+            // 
+            this.LocationX.FillWeight = 50F;
+            this.LocationX.HeaderText = "X坐标";
+            this.LocationX.Name = "LocationX";
+            this.LocationX.ReadOnly = true;
+            this.LocationX.Width = 80;
+            // 
+            // LocationY
+            // 
+            this.LocationY.FillWeight = 50F;
+            this.LocationY.HeaderText = "Y坐标";
+            this.LocationY.Name = "LocationY";
+            this.LocationY.ReadOnly = true;
+            this.LocationY.Width = 80;
+            // 
+            // Title
+            // 
+            this.Title.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Title.HeaderText = "窗口标题";
+            this.Title.Name = "Title";
+            this.Title.ReadOnly = true;
+            // 
+            // ProgramIcon
+            // 
+            this.ProgramIcon.HeaderText = "图标";
+            this.ProgramIcon.Name = "ProgramIcon";
+            this.ProgramIcon.ReadOnly = true;
+            this.ProgramIcon.Width = 50;
+            // 
+            // ClassName
+            // 
+            this.ClassName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ClassName.HeaderText = "路径";
+            this.ClassName.Name = "ClassName";
+            this.ClassName.ReadOnly = true;
+            // 
+            // Date
+            // 
+            this.Date.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Date.FillWeight = 80F;
+            this.Date.HeaderText = "时间";
+            this.Date.Name = "Date";
+            this.Date.ReadOnly = true;
             // 
             // statusStrip3
             // 
+            this.statusStrip3.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.statusStrip3.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel3,
             this.toolStripStatusLabel4});
-            this.statusStrip3.Location = new System.Drawing.Point(0, 478);
+            this.statusStrip3.Location = new System.Drawing.Point(0, 528);
             this.statusStrip3.Name = "statusStrip3";
             this.statusStrip3.Padding = new System.Windows.Forms.Padding(1, 0, 19, 0);
-            this.statusStrip3.Size = new System.Drawing.Size(882, 25);
+            this.statusStrip3.Size = new System.Drawing.Size(982, 25);
             this.statusStrip3.TabIndex = 8;
             this.statusStrip3.Text = "statusStrip3";
             // 
             // statusStrip2
             // 
+            this.statusStrip2.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.statusStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel5});
-            this.statusStrip2.Location = new System.Drawing.Point(0, 503);
+            this.statusStrip2.Location = new System.Drawing.Point(0, 553);
             this.statusStrip2.Name = "statusStrip2";
             this.statusStrip2.Padding = new System.Windows.Forms.Padding(1, 0, 19, 0);
-            this.statusStrip2.Size = new System.Drawing.Size(882, 25);
+            this.statusStrip2.Size = new System.Drawing.Size(982, 25);
             this.statusStrip2.TabIndex = 7;
             this.statusStrip2.Text = "statusStrip2";
             // 
             // statusStrip1
             // 
+            this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1,
             this.toolStripStatusLabel2});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 528);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 578);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Padding = new System.Windows.Forms.Padding(1, 0, 19, 0);
-            this.statusStrip1.Size = new System.Drawing.Size(882, 25);
+            this.statusStrip1.Size = new System.Drawing.Size(982, 25);
             this.statusStrip1.TabIndex = 6;
             this.statusStrip1.Text = "statusStrip1";
             // 
             // toolStrip1
             // 
+            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripButton1,
             this.toolStripButton2,
@@ -202,7 +275,7 @@
             this.toolStripButton7});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(882, 27);
+            this.toolStrip1.Size = new System.Drawing.Size(982, 27);
             this.toolStrip1.TabIndex = 5;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -211,7 +284,7 @@
             this.toolStripButton1.Image = global::GlobalHook.Properties.Resources.keyboard_off;
             this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(119, 24);
+            this.toolStripButton1.Size = new System.Drawing.Size(123, 24);
             this.toolStripButton1.Text = "禁止监测键盘";
             this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
@@ -220,7 +293,7 @@
             this.toolStripButton2.Image = global::GlobalHook.Properties.Resources.mouse_off;
             this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(119, 24);
+            this.toolStripButton2.Size = new System.Drawing.Size(123, 24);
             this.toolStripButton2.Text = "禁止监测鼠标";
             this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
             // 
@@ -229,7 +302,7 @@
             this.toolStripButton3.Image = global::GlobalHook.Properties.Resources.clear_replay;
             this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton3.Name = "toolStripButton3";
-            this.toolStripButton3.Size = new System.Drawing.Size(59, 24);
+            this.toolStripButton3.Size = new System.Drawing.Size(63, 24);
             this.toolStripButton3.Text = "清除";
             this.toolStripButton3.Click += new System.EventHandler(this.toolStripButton3_Click);
             // 
@@ -238,7 +311,7 @@
             this.toolStripButton4.Image = global::GlobalHook.Properties.Resources.process;
             this.toolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton4.Name = "toolStripButton4";
-            this.toolStripButton4.Size = new System.Drawing.Size(59, 24);
+            this.toolStripButton4.Size = new System.Drawing.Size(63, 24);
             this.toolStripButton4.Text = "进程";
             this.toolStripButton4.Click += new System.EventHandler(this.toolStripButton4_Click);
             // 
@@ -247,7 +320,7 @@
             this.toolStripButton5.Image = global::GlobalHook.Properties.Resources.save;
             this.toolStripButton5.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton5.Name = "toolStripButton5";
-            this.toolStripButton5.Size = new System.Drawing.Size(59, 24);
+            this.toolStripButton5.Size = new System.Drawing.Size(63, 24);
             this.toolStripButton5.Text = "保存";
             this.toolStripButton5.Click += new System.EventHandler(this.toolStripButton5_Click);
             // 
@@ -256,7 +329,7 @@
             this.toolStripButton6.Image = global::GlobalHook.Properties.Resources.setting;
             this.toolStripButton6.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton6.Name = "toolStripButton6";
-            this.toolStripButton6.Size = new System.Drawing.Size(59, 24);
+            this.toolStripButton6.Size = new System.Drawing.Size(63, 24);
             this.toolStripButton6.Text = "设置";
             this.toolStripButton6.Click += new System.EventHandler(this.toolStripButton6_Click);
             // 
@@ -265,7 +338,7 @@
             this.toolStripButton7.Image = global::GlobalHook.Properties.Resources.Filter;
             this.toolStripButton7.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton7.Name = "toolStripButton7";
-            this.toolStripButton7.Size = new System.Drawing.Size(59, 24);
+            this.toolStripButton7.Size = new System.Drawing.Size(63, 24);
             this.toolStripButton7.Text = "筛选";
             this.toolStripButton7.Click += new System.EventHandler(this.toolStripButton7_Click);
             // 
@@ -292,6 +365,7 @@
             // 
             // contextMenuStrip1
             // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.打开ToolStripMenuItem,
             this.进程ToolStripMenuItem,
@@ -423,83 +497,11 @@
             this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
             this.dataGridViewTextBoxColumn8.ReadOnly = true;
             // 
-            // keyboard
-            // 
-            this.keyboard.HeaderText = "";
-            this.keyboard.Name = "keyboard";
-            this.keyboard.ReadOnly = true;
-            this.keyboard.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.keyboard.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.keyboard.Width = 50;
-            // 
-            // deviceName
-            // 
-            this.deviceName.FillWeight = 40F;
-            this.deviceName.HeaderText = "名称";
-            this.deviceName.Name = "deviceName";
-            this.deviceName.ReadOnly = true;
-            this.deviceName.Width = 60;
-            // 
-            // KeyDate
-            // 
-            this.KeyDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.KeyDate.FillWeight = 60F;
-            this.KeyDate.HeaderText = "按下的键";
-            this.KeyDate.Name = "KeyDate";
-            this.KeyDate.ReadOnly = true;
-            // 
-            // LocationX
-            // 
-            this.LocationX.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.LocationX.FillWeight = 50F;
-            this.LocationX.HeaderText = "X坐标";
-            this.LocationX.Name = "LocationX";
-            this.LocationX.ReadOnly = true;
-            // 
-            // LocationY
-            // 
-            this.LocationY.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.LocationY.FillWeight = 50F;
-            this.LocationY.HeaderText = "Y坐标";
-            this.LocationY.Name = "LocationY";
-            this.LocationY.ReadOnly = true;
-            // 
-            // Title
-            // 
-            this.Title.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Title.FillWeight = 80F;
-            this.Title.HeaderText = "窗口标题";
-            this.Title.Name = "Title";
-            this.Title.ReadOnly = true;
-            // 
-            // ProgramIcon
-            // 
-            this.ProgramIcon.HeaderText = "图标";
-            this.ProgramIcon.Name = "ProgramIcon";
-            this.ProgramIcon.ReadOnly = true;
-            this.ProgramIcon.Width = 50;
-            // 
-            // ClassName
-            // 
-            this.ClassName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ClassName.FillWeight = 80F;
-            this.ClassName.HeaderText = "路径";
-            this.ClassName.Name = "ClassName";
-            this.ClassName.ReadOnly = true;
-            // 
-            // Date
-            // 
-            this.Date.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Date.FillWeight = 50F;
-            this.Date.HeaderText = "时间";
-            this.Date.Name = "Date";
-            this.Date.ReadOnly = true;
-            // 
             // HookOutputFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(882, 553);
+            this.ClientSize = new System.Drawing.Size(982, 603);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.statusStrip3);
             this.Controls.Add(this.statusStrip2);

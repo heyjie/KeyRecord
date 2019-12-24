@@ -10,7 +10,9 @@ using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using System.Diagnostics;
 using System.IO;
-using GlobalHook.Properties; 
+using GlobalHook.Properties;
+using System.Security.Permissions;
+using GlobalHook.Common;
 
 namespace GlobalHook
 {
@@ -54,6 +56,7 @@ namespace GlobalHook
         KeyboardHook k_hook;//键盘监测
         MouseHook m_hook;//鼠标监测
         HelpProvider HP;//帮助文档
+        bool StartRec;//开始录制
         private void HookOutputFrm_Load(object sender, EventArgs e)
         {
             k_hook = new KeyboardHook();
@@ -101,6 +104,7 @@ namespace GlobalHook
                 notifyIcon1.Visible = true;
             }
         }
+
         #region 工具栏事件
         //禁止监测键盘
         private void toolStripButton1_Click(object sender, EventArgs e)
@@ -540,6 +544,7 @@ namespace GlobalHook
         public bool KeySelect;//键盘选项
         public bool MouseSelect;//鼠标选项
         public string FileName;//文件名
+        List<KeyboardHook> kb;
         public void HookOutputFrm_SetAutoSave(string path, string interval, bool keySelect, bool mouseSelect,string filename)
         {            
             timer2.Interval = Convert.ToInt32(interval);

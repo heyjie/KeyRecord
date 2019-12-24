@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.3.0\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.3.0\build\EntityFramework.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
@@ -29,9 +30,11 @@
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
-    <PlatformTarget>x86</PlatformTarget>
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -50,8 +53,49 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.3.0\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.3.0\lib\net40\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="LiveCharts, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <HintPath>..\packages\LiveCharts.0.9.7\lib\net40\LiveCharts.dll</HintPath>
+    </Reference>
+    <Reference Include="LiveCharts.WinForms, Version=0.9.7.1, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <HintPath>..\packages\LiveCharts.WinForms.0.9.7.1\lib\net40\LiveCharts.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="LiveCharts.Wpf, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <HintPath>..\packages\LiveCharts.Wpf.0.9.7\lib\net40\LiveCharts.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.8\lib\net40-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="MetroFramework.Design, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="MetroFramework.Fonts, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.Fonts.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.SQLite, Version=1.0.112.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SQLite.Core.1.0.112.0\lib\net40\System.Data.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.SQLite.EF6, Version=1.0.112.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SQLite.EF6.1.0.112.0\lib\net40\System.Data.SQLite.EF6.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.SQLite.Linq, Version=1.0.112.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SQLite.Linq.1.0.112.0\lib\net40\System.Data.SQLite.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -60,62 +104,84 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CloseFrm.cs">
+    <Compile Include="Common\Common.cs" />
+    <Compile Include="Common\CSKeyValue.cs" />
+    <Compile Include="DataBase\DBUtils.cs" />
+    <Compile Include="DataBase\SQLiteHelper.cs" />
+    <Compile Include="DataBase\SqlLiteHelper.cs" />
+    <Compile Include="Form\CloseFrm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CloseFrm.Designer.cs">
+    <Compile Include="Form\CloseFrm.Designer.cs">
       <DependentUpon>CloseFrm.cs</DependentUpon>
     </Compile>
     <Compile Include="Common\DataGridViewAutoFilterColumnHeaderCell.cs" />
-    <Compile Include="FilterFrm.cs">
+    <Compile Include="CSGlobal.cs" />
+    <Compile Include="Form\FilterFrm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FilterFrm.Designer.cs">
+    <Compile Include="Form\FilterFrm.Designer.cs">
       <DependentUpon>FilterFrm.cs</DependentUpon>
     </Compile>
     <Compile Include="Common\GlobalHook.cs" />
-    <Compile Include="Model\KeyMouseModel.cs" />
-    <Compile Include="ProcessFrm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ProcessFrm.Designer.cs">
-      <DependentUpon>ProcessFrm.cs</DependentUpon>
-    </Compile>
     <Compile Include="HookOutputFrm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="HookOutputFrm.Designer.cs">
       <DependentUpon>HookOutputFrm.cs</DependentUpon>
     </Compile>
+    <Compile Include="HookOutputFrm2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HookOutputFrm2.Designer.cs">
+      <DependentUpon>HookOutputFrm2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HookOutputFrm2Deal.cs" />
+    <Compile Include="Model\KeyMouseModel.cs" />
+    <Compile Include="Form\ProcessFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\ProcessFrm.Designer.cs">
+      <DependentUpon>ProcessFrm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Resources\MouseHook.cs" />
-    <Compile Include="Resources\KeyboardHook.cs" />
-    <Compile Include="SaveFrm.cs">
+    <Compile Include="Form\SaveFrm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SaveFrm.Designer.cs">
+    <Compile Include="Form\SaveFrm.Designer.cs">
       <DependentUpon>SaveFrm.cs</DependentUpon>
     </Compile>
-    <Compile Include="SetFrm.cs">
+    <Compile Include="Form\SetFrm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SetFrm.Designer.cs">
+    <Compile Include="Form\SetFrm.Designer.cs">
       <DependentUpon>SetFrm.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="CloseFrm.resx">
+    <Compile Include="UIControl\ThermalMapUC.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UIControl\ThermalMapUC.Designer.cs">
+      <DependentUpon>ThermalMapUC.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Form\CloseFrm.resx">
       <DependentUpon>CloseFrm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FilterFrm.resx">
+    <EmbeddedResource Include="Form\FilterFrm.resx">
       <DependentUpon>FilterFrm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="HookOutputFrm.resx">
       <DependentUpon>HookOutputFrm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ProcessFrm.resx">
+    <EmbeddedResource Include="Form\ProcessFrm.resx">
       <DependentUpon>ProcessFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HookOutputFrm2.resx">
+      <DependentUpon>HookOutputFrm2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -127,15 +193,22 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="SaveFrm.resx">
+    <EmbeddedResource Include="Form\SaveFrm.resx">
       <DependentUpon>SaveFrm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SetFrm.resx">
+    <EmbeddedResource Include="Form\SetFrm.resx">
       <DependentUpon>SetFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UIControl\ThermalMapUC.resx">
+      <DependentUpon>ThermalMapUC.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="WareHouse\WareHouse_local.db">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -145,48 +218,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\hide.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\keyboard.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\keyboard-off.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\mouse.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\mouse-off.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\process.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\bitbug_favicon.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\save.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\save_favicon.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\setting.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\setting_favicon.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\system.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\system2.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\clear_replay .png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0,Profile=Client">
@@ -214,15 +245,20 @@
     <Content Include="Help.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\GlobalHook.ico" />
-    <Content Include="Resources\keyboardc.png" />
-    <Content Include="Resources\mousec.png" />
-    <Content Include="Resources\系统.png" />
-    <None Include="Resources\display.png" />
-    <None Include="Resources\Filter.png" />
-    <None Include="Resources\open.png" />
+    <None Include="Resources\win.ico" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>这台计算机上缺少此项目引用的 NuGet 程序包。使用“NuGet 程序包还原”可下载这些程序包。有关更多信息，请参见 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的文件是 {0}。</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.3.0\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.3.0\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.3.0\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.3.0\build\EntityFramework.targets'))" />
+    <Error Condition="!Exists('..\packages\System.Data.SQLite.Core.1.0.112.0\build\net40\System.Data.SQLite.Core.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\System.Data.SQLite.Core.1.0.112.0\build\net40\System.Data.SQLite.Core.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.3.0\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.3.0\build\EntityFramework.targets')" />
+  <Import Project="..\packages\System.Data.SQLite.Core.1.0.112.0\build\net40\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.112.0\build\net40\System.Data.SQLite.Core.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
