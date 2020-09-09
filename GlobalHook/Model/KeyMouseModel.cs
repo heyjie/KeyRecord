@@ -17,6 +17,7 @@ namespace GlobalHook.Model
         private string keyData;
         private int locationX;
         private int locationY;
+        private string keyType;
         private string title;
         private Bitmap programIcon;
         private string className;
@@ -51,6 +52,11 @@ namespace GlobalHook.Model
         /// 当前操作y坐标
         /// </summary>
         public int LocationY { get => locationY; set => locationY = value; }
+
+        /// <summary>
+        /// 类型
+        /// </summary>
+        public string KeyType { get => keyType; set => keyType = value; }
 
         /// <summary>
         /// 当前操作窗口标题

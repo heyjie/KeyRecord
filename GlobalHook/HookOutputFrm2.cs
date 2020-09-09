@@ -18,23 +18,25 @@ namespace GlobalHook
 {
     public partial class HookOutputFrm2 : MetroForm
     {
-
         public HookOutputFrm2()
         {
             InitializeComponent();
         }
-        
+
         private void HookOutputFrm2_Load(object sender, EventArgs e)
         {
             CSGlobal.GetInstance().k_hook.KeyDown += K_hook_KeyDown;//全局按键事件
+            CSGlobal.GetInstance().k_hook.KeyUp += K_hook_KeyUp;
             CSGlobal.GetInstance().k_hook.Start();//安装键盘钩子           
             CSGlobal.GetInstance().m_hook.MouseDown += M_hook_MouseDown;//全局点击事件
             CSGlobal.GetInstance().m_hook.Start();
             this.metroGrid_kmData.DataSource = CSGlobal.GetInstance().KeyMs;
         }
 
+
         private void M_hook_MouseDown(object sender, MouseEventArgs e)
         {
+            if (IsDisposed) return;
             string info = string.Empty;
             string tit = string.Empty;
             Icon ico = null;
@@ -63,6 +65,7 @@ namespace GlobalHook
                 int IconCount = Common.Common.ExtractIconEx(sb.ToString(), -1, null, null, 0);
                 largeIcons = new IntPtr[IconCount];
                 smallIcons = new IntPtr[IconCount];
+                //GC.KeepAlive(Common.Common.ExtractIconEx(sb.ToString(), 0, largeIcons, smallIcons, IconCount));
                 Common.Common.ExtractIconEx(sb.ToString(), 0, largeIcons, smallIcons, IconCount);
                 IntPtr icon = new IntPtr(0);
                 try
@@ -85,6 +88,7 @@ namespace GlobalHook
             KeyMouseModel km = new KeyMouseModel();
             km.CategoryIcon = (Bitmap)imageList.Images["mousec.png"];
             km.DeviceName = "鼠标";
+            km.KeyType = e.ToString();
             km.KeyData = e.Button.ToString();
             km.LocationX = e.X;
             km.LocationY = e.Y;
@@ -98,8 +102,14 @@ namespace GlobalHook
             km.AddKeyMouseData();
         }
 
+        private void K_hook_KeyUp(object sender, KeyEventArgs e)
+        {
+            CSGlobal.GetInstance().k_hook.KeyDown += K_hook_KeyDown;
+        }
+
         private void K_hook_KeyDown(object sender, KeyEventArgs e)
         {
+            CSGlobal.GetInstance().k_hook.KeyDown -= K_hook_KeyDown;
             //判断按下的键（Alt + A）
             if (e.KeyValue == (int)Keys.A && (int)Control.ModifierKeys == (int)Keys.Alt)
             //if (e.KeyData.ToString() == Settings.Default.lblKeyState)
@@ -169,13 +179,18 @@ namespace GlobalHook
             km.Title = tit;
             km.ClassName = className.ToString();
             km.ProcessPath = info;
-            km.ExecuteDate= DateTime.Now.ToString();
+            km.ExecuteDate = DateTime.Now.ToString();
             km.ProgramIcon = ico == null ? (Bitmap)imageList.Images["win.ico"] : ico.ToBitmap();
             CSGlobal.GetInstance().KeyMs.Add(km);
-            this.metroGrid_kmData.FirstDisplayedScrollingRowIndex = this.metroGrid_kmData.Rows.Count - 1;
-            km.AddKeyMouseData();
+            if(!this.metroGrid_kmData.Focused)
+            {
+                this.metroGrid_kmData.FirstDisplayedScrollingRowIndex = this.metroGrid_kmData.Rows.Count - 1;
+                km.AddKeyMouseData();
+            }
+            
         }
 
+        //右键打开文件夹
         private void ToolStripMenuItem_open_Click(object sender, EventArgs e)
         {
             var selectRows = metroGrid_kmData.SelectedRows;
@@ -208,9 +223,8 @@ namespace GlobalHook
             }
             catch (Exception ex)
             {
-                
+                MetroMessageBox.Show(CSGlobal.GetInstance().hookFrm, "打开文件夹失败\n" + ex.ToString(), "系统错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
         }
 
         private void metroButton1_Click(object sender, EventArgs e)

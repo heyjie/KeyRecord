@@ -1,2 +1,7 @@
-﻿GlobalHook.suo
+GlobalHook.suo
 .vs/
+GlobalHook/bin
+GlobalHook/obj
+KeyMouseHook/bin/
+KeyMouseHook/obj/
+packages/
