@@ -5,3 +5,6 @@ GlobalHook/obj
 KeyMouseHook/bin/
 KeyMouseHook/obj/
 packages/
+KeyRecord/obj/
+KeyRecord/bin/
+KeyRecord/Doc/

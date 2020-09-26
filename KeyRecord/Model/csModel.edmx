@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="WareHouse_localModel.Store" Provider="System.Data.SQLite.EF6" ProviderManifestToken="data source=D:\Project\Source\Repos\GlobalHook\GlobalHook\WareHouse\WareHouse_local.db" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="KeyMouse">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DeviceName" Type="nvarchar" MaxLength="2147483647" />
+          <Property Name="KeyData" Type="nvarchar" MaxLength="2147483647" />
+          <Property Name="LocationX" Type="integer" />
+          <Property Name="LocationY" Type="integer" />
+          <Property Name="Title" Type="nvarchar" MaxLength="2147483647" />
+          <Property Name="ClassName" Type="nvarchar" MaxLength="2147483647" />
+          <Property Name="ProcessPath" Type="nvarchar" MaxLength="2147483647" />
+          <Property Name="ExecuteDate" Type="datetime" />
+          <Property Name="ExtendedValue" Type="nvarchar" MaxLength="2147483647" />
+        </EntityType>
+        <EntityContainer Name="WareHouse_localModelStoreContainer">
+          <EntitySet Name="KeyMouse" EntityType="Self.KeyMouse" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="WareHouse_localModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="KeyMouse">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DeviceName" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="KeyData" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="LocationX" Type="Int64" />
+          <Property Name="LocationY" Type="Int64" />
+          <Property Name="Title" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="ClassName" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="ProcessPath" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="ExecuteDate" Type="DateTime" />
+          <Property Name="ExtendedValue" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="WareHouse_localEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="KeyMice" EntityType="Self.KeyMouse" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="WareHouse_localModelStoreContainer" CdmEntityContainer="WareHouse_localEntities">
+          <EntitySetMapping Name="KeyMice">
+            <EntityTypeMapping TypeName="WareHouse_localModel.KeyMouse">
+              <MappingFragment StoreEntitySet="KeyMouse">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DeviceName" ColumnName="DeviceName" />
+                <ScalarProperty Name="KeyData" ColumnName="KeyData" />
+                <ScalarProperty Name="LocationX" ColumnName="LocationX" />
+                <ScalarProperty Name="LocationY" ColumnName="LocationY" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="ClassName" ColumnName="ClassName" />
+                <ScalarProperty Name="ProcessPath" ColumnName="ProcessPath" />
+                <ScalarProperty Name="ExecuteDate" ColumnName="ExecuteDate" />
+                <ScalarProperty Name="ExtendedValue" ColumnName="ExtendedValue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

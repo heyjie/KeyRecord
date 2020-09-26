@@ -2,7 +2,8 @@
 
 ## GlobalHook是什么?
 这是一款监测和记录计算机上用户一切鼠标键盘行为的软件。由于是钩子程序，所以只要开启了软件，就会在任何环境中实时记录用户操作行为，并生成记录日志。
-比如按下了什么按键，点击了什么软件，进入了什么网站等等。可以直接运行GlobalHook\bin\Debug目录下的GlobalHook.exe来启动程序。
+比如按下了什么按键，点击了什么软件，进入了什么网站等等。
+[下载地址](https://gitee.com/Rna_zoro/GlobalHook/releases)
 
 ## GlobalHook有哪些功能？
 
@@ -20,8 +21,9 @@
 在兴趣的驱动下,写一个`免费`的东西，有欣喜，也还有汗水，希望你喜欢我的作品，同时也能支持一下。
 
 ## 截图
-![globalhook](/image/globalhook.png)
-![select](/image/select.png)
+![](/image/keyRecord.png)
+![](/image/keyRecord2.png)
+![](/image/keyRecord3.png)
 
 ## 关于作者
 
