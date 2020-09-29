@@ -142,11 +142,17 @@
     <Compile Include="UIControl\HeatMapUC.Designer.cs">
       <DependentUpon>HeatMapUC.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserForm\HeatMapFrm.cs">
+    <Compile Include="UserForm\ClickHeatMapFrm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UserForm\HeatMapFrm.Designer.cs">
-      <DependentUpon>HeatMapFrm.cs</DependentUpon>
+    <Compile Include="UserForm\ClickHeatMapFrm.Designer.cs">
+      <DependentUpon>ClickHeatMapFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserForm\KeyHeatMapFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserForm\KeyHeatMapFrm.Designer.cs">
+      <DependentUpon>KeyHeatMapFrm.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="HookOutputFrm2.resx">
       <DependentUpon>HookOutputFrm2.cs</DependentUpon>
@@ -164,8 +170,8 @@
     <EmbeddedResource Include="UIControl\HeatMapUC.resx">
       <DependentUpon>HeatMapUC.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserForm\HeatMapFrm.resx">
-      <DependentUpon>HeatMapFrm.cs</DependentUpon>
+    <EmbeddedResource Include="UserForm\ClickHeatMapFrm.resx">
+      <DependentUpon>ClickHeatMapFrm.cs</DependentUpon>
     </EmbeddedResource>
     <EntityDeploy Include="Model\csModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>

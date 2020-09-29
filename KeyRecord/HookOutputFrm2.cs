@@ -27,7 +27,6 @@ namespace KeyRecord
             InitializeComponent();
             //图表初始化
             ConstantChanges();
-            PieChartExample();
         }
 
         private void HookOutputFrm2_Load(object sender, EventArgs e)
@@ -86,9 +85,29 @@ namespace KeyRecord
 
         private void K_hook_KeyUp(object sender, KeyEventArgs e)
         {
+            if (!(e.KeyValue == (int)Keys.LMenu
+                || e.KeyValue == (int)Keys.RMenu
+                || e.KeyValue == (int)Keys.LControlKey
+                || e.KeyValue == (int)Keys.RControlKey
+                || e.KeyValue == (int)Keys.LShiftKey
+                || e.KeyValue == (int)Keys.RShiftKey
+                || e.KeyValue == (int)Keys.LWin
+                || e.KeyValue == (int)Keys.RWin
+                || e.KeyValue == (int)Keys.Menu
+                || e.KeyValue == (int)Keys.Control
+                || e.KeyValue == (int)Keys.Shift
+                ))
+            {
+                CSGlobal.GetInstance().k_hook.KeyDown += K_hook_KeyDown;
+            }
+        }
+
+        private async void K_hook_KeyDown(object sender, KeyEventArgs e)
+        {
+
             //判断按下的键（Alt + A）
-            if (e.KeyValue == (int)Keys.A && (int)Control.ModifierKeys == (int)Keys.Alt)
             //if (e.KeyData.ToString() == Settings.Default.lblKeyState)
+            if (e.KeyValue == (int)Keys.A && (int)Control.ModifierKeys == (int)Keys.Alt)
             {
                 //System.Windows.Forms.MessageBox.Show("按下了指定快捷键组合");
                 if (this.Visible == true)
@@ -103,12 +122,22 @@ namespace KeyRecord
                     this.Show();
                 }
             }
-            CSGlobal.GetInstance().k_hook.KeyDown += K_hook_KeyDown;
-        }
-
-        private async void K_hook_KeyDown(object sender, KeyEventArgs e)
-        {
-            CSGlobal.GetInstance().k_hook.KeyDown -= K_hook_KeyDown;
+            //避免一直触发事件，除了控制键
+            if (!(e.KeyValue == (int)Keys.LMenu
+                || e.KeyValue == (int)Keys.RMenu
+                || e.KeyValue == (int)Keys.LControlKey
+                || e.KeyValue == (int)Keys.RControlKey
+                || e.KeyValue == (int)Keys.LShiftKey
+                || e.KeyValue == (int)Keys.RShiftKey
+                || e.KeyValue == (int)Keys.LWin
+                || e.KeyValue == (int)Keys.RWin
+                || e.KeyValue == (int)Keys.Menu
+                || e.KeyValue == (int)Keys.Control
+                || e.KeyValue == (int)Keys.Shift
+                ))
+            {
+                CSGlobal.GetInstance().k_hook.KeyDown -= K_hook_KeyDown;
+            }
             //获取widos窗口信息
             Dictionary<string, object> winDet = GetWindowDetail();
             string info = winDet["info"].ToString();
@@ -336,6 +365,7 @@ namespace KeyRecord
 
             //lets only use the last 30 values
             if (ChartValues.Count > 30) ChartValues.RemoveAt(0);
+            if (ChartValues_Mouse.Count > 30) ChartValues.RemoveAt(0);
         }
 
         public class MeasureModel
@@ -410,7 +440,7 @@ namespace KeyRecord
 
         private void metroButton3_Click(object sender, EventArgs e)
         {
-            HeatMapFrm heatFrm = new HeatMapFrm();
+            ClickHeatMapFrm heatFrm = new ClickHeatMapFrm();
             heatFrm.Show();
         }
 
@@ -435,7 +465,7 @@ namespace KeyRecord
         private void metroTabControl_main_Selected(object sender, TabControlEventArgs e)
         {
             if (metroTabControl_main.SelectedTab == metroTabPage_chart)
-            {   //切换图表选项卡，刷新饼图
+            {
                 PieChartExample();
                 Timer.Start();
             }

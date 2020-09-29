@@ -14,11 +14,11 @@ using System.Windows.Forms;
 namespace KeyRecord.UserForm
 {
 
-    public partial class HeatMapFrm : MetroForm
+    public partial class ClickHeatMapFrm : MetroForm
     {
 
         public delegate void DoApiCallDelegate();
-        public HeatMapFrm()
+        public ClickHeatMapFrm()
         {
             InitializeComponent();
             //DoubleBuffered = true;

@@ -1,6 +1,6 @@
 ﻿namespace KeyRecord.UserForm
 {
-    partial class HeatMapFrm
+    partial class ClickHeatMapFrm
     {
         /// <summary>
         /// Required designer variable.

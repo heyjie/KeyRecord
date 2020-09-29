@@ -55,7 +55,9 @@
             this.ExtendedValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.metroTabPage_chart = new MetroFramework.Controls.MetroTabPage();
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
+            this.cartesianChart1 = new LiveCharts.WinForms.CartesianChart();
             this.metroPanel2 = new MetroFramework.Controls.MetroPanel();
+            this.pieChart1 = new LiveCharts.WinForms.PieChart();
             this.metroTabPage_count = new MetroFramework.Controls.MetroTabPage();
             this.metroGrid_count = new MetroFramework.Controls.MetroGrid();
             this.dataGridViewImageColumn3 = new System.Windows.Forms.DataGridViewImageColumn();
@@ -91,8 +93,6 @@
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.metroToolTip1 = new MetroFramework.Components.MetroToolTip();
-            this.pieChart1 = new LiveCharts.WinForms.PieChart();
-            this.cartesianChart1 = new LiveCharts.WinForms.CartesianChart();
             this.metroContextMenu_grid.SuspendLayout();
             this.metroTabControl_main.SuspendLayout();
             this.metroTabPage_log.SuspendLayout();
@@ -369,6 +369,15 @@
             this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;
             this.metroPanel1.VerticalScrollbarSize = 10;
             // 
+            // cartesianChart1
+            // 
+            this.cartesianChart1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cartesianChart1.Location = new System.Drawing.Point(0, 0);
+            this.cartesianChart1.Name = "cartesianChart1";
+            this.cartesianChart1.Size = new System.Drawing.Size(368, 312);
+            this.cartesianChart1.TabIndex = 2;
+            this.cartesianChart1.Text = "cartesianChart1";
+            // 
             // metroPanel2
             // 
             this.metroPanel2.Controls.Add(this.pieChart1);
@@ -383,6 +392,15 @@
             this.metroPanel2.VerticalScrollbarBarColor = true;
             this.metroPanel2.VerticalScrollbarHighlightOnWheel = false;
             this.metroPanel2.VerticalScrollbarSize = 10;
+            // 
+            // pieChart1
+            // 
+            this.pieChart1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pieChart1.Location = new System.Drawing.Point(0, 0);
+            this.pieChart1.Name = "pieChart1";
+            this.pieChart1.Size = new System.Drawing.Size(304, 312);
+            this.pieChart1.TabIndex = 2;
+            this.pieChart1.Text = "pieChart1";
             // 
             // metroTabPage_count
             // 
@@ -801,24 +819,6 @@
             this.metroToolTip1.StyleManager = null;
             this.metroToolTip1.Theme = MetroFramework.MetroThemeStyle.Light;
             // 
-            // pieChart1
-            // 
-            this.pieChart1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pieChart1.Location = new System.Drawing.Point(0, 0);
-            this.pieChart1.Name = "pieChart1";
-            this.pieChart1.Size = new System.Drawing.Size(304, 312);
-            this.pieChart1.TabIndex = 2;
-            this.pieChart1.Text = "pieChart1";
-            // 
-            // cartesianChart1
-            // 
-            this.cartesianChart1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cartesianChart1.Location = new System.Drawing.Point(0, 0);
-            this.cartesianChart1.Name = "cartesianChart1";
-            this.cartesianChart1.Size = new System.Drawing.Size(368, 312);
-            this.cartesianChart1.TabIndex = 2;
-            this.cartesianChart1.Text = "cartesianChart1";
-            // 
             // HookOutputFrm2
             // 
             this.ApplyImageInvert = true;
@@ -830,6 +830,7 @@
             this.ClientSize = new System.Drawing.Size(720, 432);
             this.Controls.Add(this.metroTabControl_main);
             this.Controls.Add(this.metroToggle1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "HookOutputFrm2";
