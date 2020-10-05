@@ -45,6 +45,7 @@
             this.CategoryIcon = new System.Windows.Forms.DataGridViewImageColumn();
             this.DeviceName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.KeyData = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.KeyCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LocationX = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LocationY = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Title = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -66,11 +67,12 @@
             this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewImageColumn4 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewTextBoxColumn15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewImageColumn4 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewTextBoxColumn16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.metroTile1 = new MetroFramework.Controls.MetroTile();
             this.metroTabPage_option = new MetroFramework.Controls.MetroTabPage();
             this.metroButton4 = new MetroFramework.Controls.MetroButton();
@@ -183,6 +185,7 @@
             this.CategoryIcon,
             this.DeviceName,
             this.KeyData,
+            this.KeyCode,
             this.LocationX,
             this.LocationY,
             this.Title,
@@ -255,6 +258,16 @@
             this.KeyData.MinimumWidth = 60;
             this.KeyData.Name = "KeyData";
             this.KeyData.ReadOnly = true;
+            // 
+            // KeyCode
+            // 
+            this.KeyCode.DataPropertyName = "KeyCode";
+            this.KeyCode.FillWeight = 60F;
+            this.KeyCode.HeaderText = "键码";
+            this.KeyCode.MinimumWidth = 60;
+            this.KeyCode.Name = "KeyCode";
+            this.KeyCode.ReadOnly = true;
+            this.KeyCode.Width = 60;
             // 
             // LocationX
             // 
@@ -444,11 +457,12 @@
             this.dataGridViewTextBoxColumn12,
             this.dataGridViewTextBoxColumn13,
             this.dataGridViewTextBoxColumn14,
-            this.dataGridViewImageColumn4,
             this.dataGridViewTextBoxColumn15,
+            this.dataGridViewImageColumn4,
             this.dataGridViewTextBoxColumn16,
             this.dataGridViewTextBoxColumn17,
-            this.dataGridViewTextBoxColumn18});
+            this.dataGridViewTextBoxColumn18,
+            this.dataGridViewTextBoxColumn19});
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
@@ -515,18 +529,17 @@
             // 
             // dataGridViewTextBoxColumn12
             // 
-            this.dataGridViewTextBoxColumn12.DataPropertyName = "LocationX";
-            this.dataGridViewTextBoxColumn12.HeaderText = "X坐标";
-            this.dataGridViewTextBoxColumn12.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn12.DataPropertyName = "KeyCode";
+            this.dataGridViewTextBoxColumn12.HeaderText = "键码";
+            this.dataGridViewTextBoxColumn12.MinimumWidth = 60;
             this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
             this.dataGridViewTextBoxColumn12.ReadOnly = true;
-            this.dataGridViewTextBoxColumn12.Visible = false;
-            this.dataGridViewTextBoxColumn12.Width = 70;
+            this.dataGridViewTextBoxColumn12.Width = 125;
             // 
             // dataGridViewTextBoxColumn13
             // 
-            this.dataGridViewTextBoxColumn13.DataPropertyName = "LocationY";
-            this.dataGridViewTextBoxColumn13.HeaderText = "Y坐标";
+            this.dataGridViewTextBoxColumn13.DataPropertyName = "LocationX";
+            this.dataGridViewTextBoxColumn13.HeaderText = "X坐标";
             this.dataGridViewTextBoxColumn13.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
             this.dataGridViewTextBoxColumn13.ReadOnly = true;
@@ -535,14 +548,24 @@
             // 
             // dataGridViewTextBoxColumn14
             // 
-            this.dataGridViewTextBoxColumn14.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn14.DataPropertyName = "Title";
-            this.dataGridViewTextBoxColumn14.FillWeight = 90F;
-            this.dataGridViewTextBoxColumn14.HeaderText = "窗口";
-            this.dataGridViewTextBoxColumn14.MinimumWidth = 60;
+            this.dataGridViewTextBoxColumn14.DataPropertyName = "LocationY";
+            this.dataGridViewTextBoxColumn14.HeaderText = "Y坐标";
+            this.dataGridViewTextBoxColumn14.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn14.Name = "dataGridViewTextBoxColumn14";
             this.dataGridViewTextBoxColumn14.ReadOnly = true;
             this.dataGridViewTextBoxColumn14.Visible = false;
+            this.dataGridViewTextBoxColumn14.Width = 70;
+            // 
+            // dataGridViewTextBoxColumn15
+            // 
+            this.dataGridViewTextBoxColumn15.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn15.DataPropertyName = "Title";
+            this.dataGridViewTextBoxColumn15.FillWeight = 90F;
+            this.dataGridViewTextBoxColumn15.HeaderText = "窗口";
+            this.dataGridViewTextBoxColumn15.MinimumWidth = 60;
+            this.dataGridViewTextBoxColumn15.Name = "dataGridViewTextBoxColumn15";
+            this.dataGridViewTextBoxColumn15.ReadOnly = true;
+            this.dataGridViewTextBoxColumn15.Visible = false;
             // 
             // dataGridViewImageColumn4
             // 
@@ -556,32 +579,21 @@
             this.dataGridViewImageColumn4.Visible = false;
             this.dataGridViewImageColumn4.Width = 60;
             // 
-            // dataGridViewTextBoxColumn15
-            // 
-            this.dataGridViewTextBoxColumn15.DataPropertyName = "ClassName";
-            this.dataGridViewTextBoxColumn15.HeaderText = "所属类名";
-            this.dataGridViewTextBoxColumn15.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn15.Name = "dataGridViewTextBoxColumn15";
-            this.dataGridViewTextBoxColumn15.ReadOnly = true;
-            this.dataGridViewTextBoxColumn15.Visible = false;
-            this.dataGridViewTextBoxColumn15.Width = 125;
-            // 
             // dataGridViewTextBoxColumn16
             // 
-            this.dataGridViewTextBoxColumn16.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn16.DataPropertyName = "ProcessPath";
-            this.dataGridViewTextBoxColumn16.HeaderText = "路径";
-            this.dataGridViewTextBoxColumn16.MinimumWidth = 60;
+            this.dataGridViewTextBoxColumn16.DataPropertyName = "ClassName";
+            this.dataGridViewTextBoxColumn16.HeaderText = "所属类名";
+            this.dataGridViewTextBoxColumn16.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn16.Name = "dataGridViewTextBoxColumn16";
             this.dataGridViewTextBoxColumn16.ReadOnly = true;
             this.dataGridViewTextBoxColumn16.Visible = false;
+            this.dataGridViewTextBoxColumn16.Width = 125;
             // 
             // dataGridViewTextBoxColumn17
             // 
             this.dataGridViewTextBoxColumn17.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn17.DataPropertyName = "ExecuteDate";
-            this.dataGridViewTextBoxColumn17.FillWeight = 60F;
-            this.dataGridViewTextBoxColumn17.HeaderText = "时间";
+            this.dataGridViewTextBoxColumn17.DataPropertyName = "ProcessPath";
+            this.dataGridViewTextBoxColumn17.HeaderText = "路径";
             this.dataGridViewTextBoxColumn17.MinimumWidth = 60;
             this.dataGridViewTextBoxColumn17.Name = "dataGridViewTextBoxColumn17";
             this.dataGridViewTextBoxColumn17.ReadOnly = true;
@@ -589,12 +601,23 @@
             // 
             // dataGridViewTextBoxColumn18
             // 
-            this.dataGridViewTextBoxColumn18.DataPropertyName = "ExtendedValue";
-            this.dataGridViewTextBoxColumn18.HeaderText = "次数";
-            this.dataGridViewTextBoxColumn18.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn18.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn18.DataPropertyName = "ExecuteDate";
+            this.dataGridViewTextBoxColumn18.FillWeight = 60F;
+            this.dataGridViewTextBoxColumn18.HeaderText = "时间";
+            this.dataGridViewTextBoxColumn18.MinimumWidth = 60;
             this.dataGridViewTextBoxColumn18.Name = "dataGridViewTextBoxColumn18";
             this.dataGridViewTextBoxColumn18.ReadOnly = true;
-            this.dataGridViewTextBoxColumn18.Width = 125;
+            this.dataGridViewTextBoxColumn18.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn19
+            // 
+            this.dataGridViewTextBoxColumn19.DataPropertyName = "ExtendedValue";
+            this.dataGridViewTextBoxColumn19.HeaderText = "次数";
+            this.dataGridViewTextBoxColumn19.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn19.Name = "dataGridViewTextBoxColumn19";
+            this.dataGridViewTextBoxColumn19.ReadOnly = true;
+            this.dataGridViewTextBoxColumn19.Width = 125;
             // 
             // metroTile1
             // 
@@ -881,9 +904,21 @@
         private MetroFramework.Controls.MetroToggle metroToggle1;
         private MetroFramework.Controls.MetroButton metroButton1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
+        private MetroFramework.Controls.MetroButton metroButton2;
+        private MetroFramework.Controls.MetroButton metroButton3;
+        private MetroFramework.Controls.MetroButton metroButton4;
+        private MetroFramework.Components.MetroToolTip metroToolTip1;
+        private MetroFramework.Controls.MetroTabPage metroTabPage_count;
+        private MetroFramework.Controls.MetroGrid metroGrid_count;
+        private MetroFramework.Controls.MetroTile metroTile1;
+        private MetroFramework.Controls.MetroPanel metroPanel1;
+        private MetroFramework.Controls.MetroPanel metroPanel2;
+        private LiveCharts.WinForms.CartesianChart cartesianChart1;
+        private LiveCharts.WinForms.PieChart pieChart1;
         private System.Windows.Forms.DataGridViewImageColumn CategoryIcon;
         private System.Windows.Forms.DataGridViewTextBoxColumn DeviceName;
         private System.Windows.Forms.DataGridViewTextBoxColumn KeyData;
+        private System.Windows.Forms.DataGridViewTextBoxColumn KeyCode;
         private System.Windows.Forms.DataGridViewTextBoxColumn LocationX;
         private System.Windows.Forms.DataGridViewTextBoxColumn LocationY;
         private System.Windows.Forms.DataGridViewTextBoxColumn Title;
@@ -892,27 +927,17 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ProcessPath;
         private System.Windows.Forms.DataGridViewTextBoxColumn ExecuteDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn ExtendedValue;
-        private MetroFramework.Controls.MetroButton metroButton2;
-        private MetroFramework.Controls.MetroButton metroButton3;
-        private MetroFramework.Controls.MetroButton metroButton4;
-        private MetroFramework.Components.MetroToolTip metroToolTip1;
-        private MetroFramework.Controls.MetroTabPage metroTabPage_count;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn14;
-        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn4;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn15;
+        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn4;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn16;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn17;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn18;
-        private MetroFramework.Controls.MetroGrid metroGrid_count;
-        private MetroFramework.Controls.MetroTile metroTile1;
-        private MetroFramework.Controls.MetroPanel metroPanel1;
-        private MetroFramework.Controls.MetroPanel metroPanel2;
-        private LiveCharts.WinForms.CartesianChart cartesianChart1;
-        private LiveCharts.WinForms.PieChart pieChart1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn19;
     }
 }

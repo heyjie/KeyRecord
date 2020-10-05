@@ -41,7 +41,6 @@ namespace KeyRecord
             this.metroGrid_kmData.DataSource = CSGlobal.GetInstance().KeyMs;
         }
 
-
         #region 日志记录页
         private async void M_hook_MouseDown(object sender, MouseEventArgs e)
         {
@@ -54,7 +53,14 @@ namespace KeyRecord
             //添加数据
             KeyMouseModel km = new KeyMouseModel();
             KeyMouse KeyM = new KeyMouse();
-            km.CategoryIcon = (Bitmap)imageList.Images["mousec.png"];
+            try
+            {
+                km.CategoryIcon = (Bitmap)imageList.Images["mousec.png"];
+            }
+            catch (Exception ex)
+            {
+                km.ProgramIcon = null;
+            }
             KeyM.DeviceName = km.DeviceName = "鼠标";
             KeyM.KeyData = km.KeyData = e.Button.ToString();
             KeyM.LocationX = km.LocationX = e.X;
@@ -70,7 +76,7 @@ namespace KeyRecord
             }
             catch (Exception ex)
             {
-                km.ProgramIcon = (Bitmap)imageList.Images["win.ico"];
+                km.ProgramIcon = null;
             }
             CSGlobal.GetInstance().KeyMs.Add(km);
             using (var context = new WareHouse_localEntities())
@@ -79,8 +85,6 @@ namespace KeyRecord
                 //context.SaveChanges();
                 await context.SaveChangesAsync();
             }
-            imageList.Images["mousec.png"].Dispose();
-            imageList.Images["win.ico"].Dispose();
         }
 
         private void K_hook_KeyUp(object sender, KeyEventArgs e)
@@ -91,8 +95,6 @@ namespace KeyRecord
                 || e.KeyValue == (int)Keys.RControlKey
                 || e.KeyValue == (int)Keys.LShiftKey
                 || e.KeyValue == (int)Keys.RShiftKey
-                || e.KeyValue == (int)Keys.LWin
-                || e.KeyValue == (int)Keys.RWin
                 || e.KeyValue == (int)Keys.Menu
                 || e.KeyValue == (int)Keys.Control
                 || e.KeyValue == (int)Keys.Shift
@@ -129,8 +131,6 @@ namespace KeyRecord
                 || e.KeyValue == (int)Keys.RControlKey
                 || e.KeyValue == (int)Keys.LShiftKey
                 || e.KeyValue == (int)Keys.RShiftKey
-                || e.KeyValue == (int)Keys.LWin
-                || e.KeyValue == (int)Keys.RWin
                 || e.KeyValue == (int)Keys.Menu
                 || e.KeyValue == (int)Keys.Control
                 || e.KeyValue == (int)Keys.Shift
@@ -147,7 +147,16 @@ namespace KeyRecord
             //添加数据
             KeyMouseModel km = new KeyMouseModel();
             KeyMouse KeyM = new KeyMouse();
-            km.CategoryIcon = (Bitmap)imageList.Images["keyboardc.png"];
+            //Bitmap icon = new Bitmap(imageList.Images["keyboardc.png"]);
+            //Bitmap win = new Bitmap(imageList.Images["win.ico"]);
+            try
+            {
+                km.CategoryIcon = (Bitmap)imageList.Images["keyboardc.png"];
+            }
+            catch (Exception ex)
+            {
+                km.ProgramIcon = null;
+            }
             KeyM.DeviceName = km.DeviceName = "键盘";
             KeyM.KeyData = km.KeyData = e.KeyData.ToString();
             km.LocationX = 0;
@@ -157,15 +166,23 @@ namespace KeyRecord
             KeyM.ProcessPath = km.ProcessPath = info;
             km.ExecuteDate = DateTime.Now.ToString();
             KeyM.ExecuteDate = DateTime.Now;
-            km.ProgramIcon = ico == null ? (Bitmap)imageList.Images["win.ico"] : ico.ToBitmap();
+            try
+            {
+                km.ProgramIcon = ico == null ? (Bitmap)imageList.Images["win.ico"] : ico.ToBitmap();
+            }
+            catch (Exception ex)
+            {
+                km.ProgramIcon = null;
+            }
+            KeyM.KeyCode = km.KeyCode = e.KeyValue;
             CSGlobal.GetInstance().KeyMs.Add(km);
             using (var context = new WareHouse_localEntities())
             {
                 context.KeyMice.Add(KeyM);
                 await context.SaveChangesAsync();
             }
-            imageList.Images["keyboardc.png"].Dispose();
-            imageList.Images["win.ico"].Dispose();
+            //imageList.Images["keyboardc.png"].Dispose();
+            //imageList.Images["win.ico"].Dispose();
         }
 
         //右键打开文件夹
@@ -381,7 +398,7 @@ namespace KeyRecord
             Func<ChartPoint, string> labelPoint = chartPoint =>
             string.Format("{0} ({1:P})", chartPoint.Y, chartPoint.Participation);
 
-            var today = DateTime.Now.Date.AddDays(-1);
+            var today = DateTime.Now.Date;
 
             using (var context = new WareHouse_localEntities())
             {
@@ -476,7 +493,8 @@ namespace KeyRecord
             if (metroTabControl_main.SelectedTab == metroTabPage_count)
             {
                 //切换统计选项卡
-                var today = DateTime.Now.Date.AddDays(-1);
+                //var today = DateTime.Now.Date.AddDays(-1);
+                var today = DateTime.Now.Date;
                 using (var context = new WareHouse_localEntities())
                 {
                     var L2EQuery = from km in context.KeyMice
@@ -518,7 +536,7 @@ namespace KeyRecord
         private void metroGrid_kmData_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
             //保持datagrid100行，数据太多datagrid性能会变差
-            if(CSGlobal.GetInstance().KeyMs.Count>100)
+            if(CSGlobal.GetInstance().KeyMs.Count>30)
             {
                 CSGlobal.GetInstance().KeyMs.RemoveAt(0);
             }

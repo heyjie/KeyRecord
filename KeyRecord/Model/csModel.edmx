@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="WareHouse_localModel.Store" Provider="System.Data.SQLite.EF6" ProviderManifestToken="data source=D:\Project\Source\Repos\GlobalHook\GlobalHook\WareHouse\WareHouse_local.db" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="WareHouse_localModel.Store" Provider="System.Data.SQLite.EF6" ProviderManifestToken="data source=D:\Project\Source\Repos\KeyRecord\KeyRecord\WareHouse\WareHouse_local.db" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="KeyMouse">
           <Key>
             <PropertyRef Name="ID" />
@@ -12,6 +12,7 @@
           <Property Name="ID" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="DeviceName" Type="nvarchar" MaxLength="2147483647" />
           <Property Name="KeyData" Type="nvarchar" MaxLength="2147483647" />
+          <Property Name="KeyCode" Type="integer" />
           <Property Name="LocationX" Type="integer" />
           <Property Name="LocationY" Type="integer" />
           <Property Name="Title" Type="nvarchar" MaxLength="2147483647" />
@@ -23,8 +24,7 @@
         <EntityContainer Name="WareHouse_localModelStoreContainer">
           <EntitySet Name="KeyMouse" EntityType="Self.KeyMouse" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="WareHouse_localModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -42,6 +42,7 @@
           <Property Name="ProcessPath" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
           <Property Name="ExecuteDate" Type="DateTime" />
           <Property Name="ExtendedValue" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="KeyCode" Type="Int64" />
         </EntityType>
         <EntityContainer Name="WareHouse_localEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="KeyMice" EntityType="Self.KeyMouse" />
@@ -55,6 +56,7 @@
           <EntitySetMapping Name="KeyMice">
             <EntityTypeMapping TypeName="WareHouse_localModel.KeyMouse">
               <MappingFragment StoreEntitySet="KeyMouse">
+                <ScalarProperty Name="KeyCode" ColumnName="KeyCode" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="DeviceName" ColumnName="DeviceName" />
                 <ScalarProperty Name="KeyData" ColumnName="KeyData" />

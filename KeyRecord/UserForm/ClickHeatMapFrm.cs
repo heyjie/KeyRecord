@@ -43,7 +43,7 @@ namespace KeyRecord.UserForm
 
         private void BulidThermalMap()
         {
-            var today = DateTime.Now.Date.AddDays(-1);
+            var today = DateTime.Now.Date;
             using (var context = new WareHouse_localEntities())
             {
                 var L2EQuery = context.KeyMice.Where(

@@ -24,5 +24,6 @@ namespace KeyRecord.Model
         public string ProcessPath { get; set; }
         public Nullable<System.DateTime> ExecuteDate { get; set; }
         public string ExtendedValue { get; set; }
+        public Nullable<long> KeyCode { get; set; }
     }
 }

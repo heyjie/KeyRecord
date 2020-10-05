@@ -14,6 +14,7 @@ namespace KeyRecord.Model
         private Bitmap categoryIcon;
         private string deviceName;
         private string keyData;
+        private int keyCode;
         private int locationX;
         private int locationY;
         private string title;
@@ -68,6 +69,22 @@ namespace KeyRecord.Model
             set
             {
                 keyData = value;
+            }
+        }
+
+        /// <summary>
+        /// 键码
+        /// </summary>
+        public int KeyCode
+        {
+            get
+            {
+                return keyCode;
+            }
+
+            set
+            {
+                keyCode = value;
             }
         }
 
