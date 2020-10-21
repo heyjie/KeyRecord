@@ -142,6 +142,10 @@
     <Compile Include="UIControl\HeatMapUC.Designer.cs">
       <DependentUpon>HeatMapUC.cs</DependentUpon>
     </Compile>
+    <Compile Include="UIControl\MyOpaqueLayer.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UIControl\MyOpaquelayerDeal.cs" />
     <Compile Include="UserForm\ClickHeatMapFrm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -210,6 +214,7 @@
       <DependentUpon>csModel.edmx</DependentUpon>
       <LastGenOutput>csModel.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\loading.gif" />
     <Content Include="Resources\Palettes\ColorPalette1.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

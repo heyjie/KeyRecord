@@ -1,4 +1,5 @@
 ﻿using KeyRecord.Model;
+using KeyRecord.UIControl;
 using MetroFramework.Forms;
 using System;
 using System.Collections.Generic;
@@ -16,7 +17,7 @@ namespace KeyRecord.UserForm
 
     public partial class ClickHeatMapFrm : MetroForm
     {
-
+        MyOpaquelayerDeal cmd = new MyOpaquelayerDeal();
         public delegate void DoApiCallDelegate();
         public ClickHeatMapFrm()
         {
@@ -36,6 +37,9 @@ namespace KeyRecord.UserForm
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            //半透明遮罩加载层
+            cmd.ShowOpaqueLayer(metroPanel1, 125, true);
+
             DoApiCallDelegate del = BulidThermalMap;//绑定委托方法
             AsyncCallback callBack = BulidThermalMapColorize;//建立异步回调方法
             del.BeginInvoke(BulidThermalMapColorize, del);//异步执行委托方法
@@ -67,14 +71,6 @@ namespace KeyRecord.UserForm
             }));
         }
 
-        private void SaveBitmap()
-        {
-
-            Bitmap bmp = new Bitmap(metroPanel1.Width, metroPanel1.Height, System.Drawing.Imaging.PixelFormat.Format24bppRgb);
-            metroPanel1.DrawToBitmap(bmp, new Rectangle(0, 0, metroPanel1.Width, metroPanel1.Height));
-            bmp.Save("led.bmp", System.Drawing.Imaging.ImageFormat.Bmp);
-        }
-
         private void BulidThermalMapColorize(IAsyncResult result)
         {
             if (IsHandleCreated)
@@ -82,6 +78,7 @@ namespace KeyRecord.UserForm
                 this.Invoke(new MethodInvoker(delegate
                 {
                     heatMapUC1.Colorize();
+                    cmd.HideOpaqueLayer();
                 }));
             }
         }
