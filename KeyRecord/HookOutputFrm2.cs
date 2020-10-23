@@ -14,6 +14,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Forms;
@@ -59,7 +60,7 @@ namespace KeyRecord
             }
             catch (Exception ex)
             {
-                km.ProgramIcon = null;
+                km.CategoryIcon = null;
             }
             KeyM.DeviceName = km.DeviceName = "鼠标";
             KeyM.KeyData = km.KeyData = e.Button.ToString();
@@ -155,7 +156,7 @@ namespace KeyRecord
             }
             catch (Exception ex)
             {
-                km.ProgramIcon = null;
+                km.CategoryIcon = null;
             }
             KeyM.DeviceName = km.DeviceName = "键盘";
             KeyM.KeyData = km.KeyData = e.KeyData.ToString();
@@ -248,22 +249,34 @@ namespace KeyRecord
                 //GetModuleFileName(pHandle, sb, sb.Capacity);
                 Common.Common.GetModuleFileNameEx(pHandle, IntPtr.Zero, sb, Common.Common.MAX_PATH);
                 Common.Common.CloseHandle(pHandle);
-                //获取图标
+                ////存放大/小图标的指针数组
                 IntPtr[] largeIcons, smallIcons;
+                //获取程序中的图标数
                 int IconCount = Common.Common.ExtractIconEx(sb.ToString(), -1, null, null, 0);
+                //创建存放大/小图标的空间
                 largeIcons = new IntPtr[IconCount];
                 smallIcons = new IntPtr[IconCount];
                 //GC.KeepAlive(Common.Common.ExtractIconEx(sb.ToString(), 0, largeIcons, smallIcons, IconCount));
+                //抽取所有的大小图标保存到largeIcons和smallIcons中  
                 Common.Common.ExtractIconEx(sb.ToString(), 0, largeIcons, smallIcons, IconCount);
-                IntPtr icon = new IntPtr(0);
+                //IntPtr icon = new IntPtr(0);
                 try
                 {
-                    icon = largeIcons[0];
-                    ico = Icon.FromHandle(icon);
+                    ico = (Icon)Icon.FromHandle(largeIcons[0]).Clone();
                 }
                 catch (Exception ex)
                 {
+                    ico = null;
                     Console.Out.WriteLine(String.Format("获取应用图标失败：{0}", ex.Message));
+                }
+                finally
+                {
+                    foreach (IntPtr ptr in largeIcons)
+                        if (ptr != IntPtr.Zero)
+                            Common.Common.DestroyIcon(ptr);
+                    foreach (IntPtr ptr in smallIcons)
+                        if (ptr != IntPtr.Zero)
+                            Common.Common.DestroyIcon(ptr);
                 }
                 tit = title.ToString();
                 info = sb.ToString();

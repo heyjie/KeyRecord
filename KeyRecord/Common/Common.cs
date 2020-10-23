@@ -72,6 +72,9 @@ namespace KeyRecord.Common
         [System.Runtime.InteropServices.DllImport("shell32.dll")]
         public static extern int ExtractIconEx(string lpszFile, int niconIndex, IntPtr[] phiconLarge, IntPtr[] phiconSmall, int nIcons);
 
+        [DllImport("user32.dll", EntryPoint = "DestroyIcon", SetLastError = true)]
+        public unsafe static extern int DestroyIcon(IntPtr hIcon);
+
         //hProcess是目标进程的句柄、hModule是目标模块的句柄(当此参数为NULL时函数返回的是进程可执行文件的路径)、lpFilename是存放路径的字符串缓冲区、nSize表示缓冲区的大小。函数调用失败将返回0。
         //注：进程的句柄须有PROCESS_QUERY_INFORMATION和PROCESS_VM_READ权限。
         [DllImport("psapi.dll")]
